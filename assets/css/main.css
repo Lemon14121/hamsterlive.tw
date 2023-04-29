@@ -2503,6 +2503,7 @@ body{
 	opacity: 1;
   }
   .info img{
+	tr
 	transform:scale(1.3,1.3);
 	transition: all 1s ease-out;
 }
@@ -2600,7 +2601,7 @@ button {
 	background-color: #FEC979;
   }
   .second{
-	background-image: url(images/11zon_cropped.png);
+	background-image: url(images/bg.png);
   }	
 
 
@@ -2608,7 +2609,7 @@ button {
 	max-width: 100%;
 	height: 440px;
 	overflow-x: scroll;
-	background-color: #10BEF1;
+	background-color: #ffa06a;
 	padding: 2%;
 	border-radius: 25px;
 	box-shadow: 0 4px 8px 0 #10BEF1, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
