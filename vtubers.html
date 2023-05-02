@@ -21,7 +21,7 @@
 				<ul class="container">
 					<li><a href="index.html">首頁</a></li>
 					<li><a href="vtubers.html">旗下成員</a></li>
-					<li><a href="2nd.html">二期生招募</a></li>
+					<li><a href="RT.html">RT招募</a></li>
 					<li><a href="studio.html">雷萌工作室</a></li>
 				</ul>
 			</nav>
@@ -35,9 +35,9 @@
 				<input type="radio" class="btn-check" name="options-outlined" id="succes" autocomplete="off">
 				<label class="btn btn-outline-success" onclick="show1()" for="succes">1期生</label>
 				<input type="radio" class="btn-check" name="options-outlined" id="succe" autocomplete="off">
-				<label class="btn btn-outline-success" onclick="show2()" for="succe">2期生</label>
+				<label class="btn btn-outline-success" onclick="show00()" for="succe">RT</label>
 				<!--<input type="radio" class="btn-check" name="options-outlined" id="succ" autocomplete="off">
-				<label class="btn btn-outline-success" onclick="show3()" for="succ">3期生</label>-->
+				<label class="btn btn-outline-success" onclick="show2()" for="succ">3期生</label>-->
 				<input type="radio" class="btn-check" name="options-outlined" id="suc" autocomplete="off">
 				<label class="btn btn-outline-success" onclick="show99()" for="suc">離開</label>
 			</article>
@@ -202,6 +202,15 @@
 			<div class="container admin" id="div2">
 				<article id="members" class="wrapper style2">
 					<div class="container">
+						<article class="row">
+							
+						</article>
+					</div>
+				</article>
+			</div>
+			<div class="container admin" id="div00">
+				<article id="members" class="wrapper style2">
+					<div class="container">
 						<header>
 							<p>Reality組</p>
 						</header>
@@ -298,15 +307,7 @@
 					</div>
 				</article>
 			</div>
-			<div class="container admin" id="div3">
-				<article id="members" class="wrapper style2">
-					<div class="container">
-						<article class="row">
-							
-						</article>
-					</div>
-				</article>
-			</div>
+			
 			<div class="container admin" id="div99">
 				<article id="members" class="wrapper style2">
 					<div class="container">
@@ -331,23 +332,31 @@
 				document.getElementById("div98").style.display="block";
 				document.getElementById("div0").style.display="none";
 				document.getElementById("div1").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div2").style.display="none";
-				document.getElementById("div3").style.display="none";
 				document.getElementById("div99").style.display="none";
 
 				function show0(){
 				document.getElementById("div0").style.display="block";
 				document.getElementById("div1").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div2").style.display="none";
-				document.getElementById("div3").style.display="none";
 				document.getElementById("div99").style.display="none";
 				document.getElementById("div98").style.display="none";
 				};
 				function show1(){
 				document.getElementById("div1").style.display="block";
 				document.getElementById("div0").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div2").style.display="none";
-				document.getElementById("div3").style.display="none";
+				document.getElementById("div99").style.display="none";
+				document.getElementById("div98").style.display="none";
+				}
+				function show00(){
+				document.getElementById("div00").style.display="block";
+				document.getElementById("div0").style.display="none";
+				document.getElementById("div1").style.display="none";
+				document.getElementById("div2").style.display="none";
 				document.getElementById("div99").style.display="none";
 				document.getElementById("div98").style.display="none";
 				}
@@ -355,15 +364,7 @@
 				document.getElementById("div2").style.display="block";
 				document.getElementById("div0").style.display="none";
 				document.getElementById("div1").style.display="none";
-				document.getElementById("div3").style.display="none";
-				document.getElementById("div99").style.display="none";
-				document.getElementById("div98").style.display="none";
-				}
-				function show3(){
-				document.getElementById("div3").style.display="block";
-				document.getElementById("div0").style.display="none";
-				document.getElementById("div1").style.display="none";
-				document.getElementById("div2").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div99").style.display="none";
 				document.getElementById("div98").style.display="none";
 				}
@@ -371,16 +372,16 @@
 				document.getElementById("div99").style.display="block";
 				document.getElementById("div0").style.display="none";
 				document.getElementById("div1").style.display="none";
-				document.getElementById("div3").style.display="none";
 				document.getElementById("div2").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div98").style.display="none";
 				}
 				function show98(){
 				document.getElementById("div98").style.display="block";
 				document.getElementById("div0").style.display="none";
 				document.getElementById("div1").style.display="none";
-				document.getElementById("div3").style.display="none";
 				document.getElementById("div2").style.display="none";
+				document.getElementById("div00").style.display="none";
 				document.getElementById("div99").style.display="none";
 				}
 			</script>
