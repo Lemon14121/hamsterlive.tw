@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AR拍照</title>
+    <style>
+        #videoWrapper {
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        }
+        #videoElement {
+        width: 100%;
+        height: 100%;
+        }
+
+        #customPhoto {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div id="videoWrapper">
+        <video id="videoElement" autoplay></video>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoElement');
+
+        // 获取并显示摄像头画面
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+            video.srcObject = stream;
+            })
+            .catch(function (error) {
+            console.log('无法获取摄像头画面：', error);
+            });
+            } 
+        else {
+            console.log('浏览器不支持getUserMedia API');
+        }
+    </script>
+
+    <div id="photoContainer">
+        <img id="customPhoto" src="images/0.png" alt="照片">
+    </div>
+    <button id="screenshotBtn">拍照</button>
+    <br>
+    <canvas id="screenshotCanvas"></canvas>
+  
+
+    <script>
+        const photoContainer = document.getElementById('photoContainer');
+        const customPhoto = document.getElementById('customPhoto');
+
+        // 鼠标移动事件处理程序
+        photoContainer.addEventListener('mousemove', function (event) {
+        const containerRect = photoContainer.getBoundingClientRect();
+        const x = event.clientX - containerRect.left;
+        const y = event.clientY - containerRect.top;
+
+        // 设置照片位置
+        customPhoto.style.left = x + 'px';
+        customPhoto.style.top = y + 'px';
+        });
+
+        const screenshotBtn = document.getElementById('screenshotBtn');
+    const screenshotCanvas = document.getElementById('screenshotCanvas');
+
+    screenshotBtn.addEventListener('click', function() {
+      // 获取屏幕截图
+      const screenshotDataUrl = captureScreenshot();
+
+      // 在页面上显示截图
+      const img = new Image();
+      img.src = screenshotDataUrl;
+      screenshotCanvas.width = img.width;
+      screenshotCanvas.height = img.height;
+      const context = screenshotCanvas.getContext('2d');
+      context.drawImage(img, 0, 0);
+    });
+
+    function captureScreenshot() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        // 创建一个与屏幕尺寸相同的canvas元素
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        // 在canvas上绘制屏幕内容
+        const context = canvas.getContext('2d');
+        context.drawImage(window.screen, 0, 0, width, height);
+
+        // 将canvas转换为DataURL
+        const dataUrl = canvas.toDataURL('內部儲存空間/DCIM/Screenshot');
+
+        return dataUrl;
+        }
+    </script>
+</body>
+</html>
