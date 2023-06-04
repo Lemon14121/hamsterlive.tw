@@ -36,11 +36,11 @@
             video.srcObject = stream;
             })
             .catch(function (error) {
-            console.log('无法获取摄像头画面：', error);
+            console.log('無法顯示畫面：', error);
             });
             } 
         else {
-            console.log('浏览器不支持getUserMedia API');
+            console.log('瀏覽器不支援');
         }
     </script>
 
@@ -97,7 +97,7 @@
         context.drawImage(window.screen, 0, 0, width, height);
 
         // 将canvas转换为DataURL
-        const dataUrl = canvas.toDataURL('內部儲存空間/DCIM/Screenshot');
+        const dataUrl = canvas.toDataURL('內部儲存空間/DCIM/Screenshot/0.png');
 
         return dataUrl;
         }
