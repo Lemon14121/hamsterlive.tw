@@ -41,10 +41,7 @@
 				<input type="radio" class="btn-check" name="options-outlined" id="suc" autocomplete="off">
 				<label class="btn btn-outline-success" onclick="show99()" for="suc">離開</label>
 			</article>
-			<div class="product">
-				<img src="images/lemon.png" alt="雷萌" class="prevBtn_bg">
-				<h2>雷萌</h2>
-			</div>
+			
 			<article>
 				<div class="container admin" id="div98">
 				<article id="members" class="wrapper style2">
