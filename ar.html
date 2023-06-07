@@ -47,6 +47,12 @@
       background-color: #ccc;
       cursor: pointer;
     }
+    #btn-change-imag {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #ccc;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="is-preload">
@@ -64,8 +70,8 @@
     <img id="image-overlay" src="images/0.png" alt="Overlay Image">
   </div>
   <button onclick="captureScreenshot()">下載合照</button>
-
-  <div id="btn-change-image">更换照片</div>
+  <button onclick="changeimage()">更换成員</button>
+  <button onclick="image()">更换自己想合照的照片</button>
 
   <script>
     const videoPreview = document.getElementById('video-preview');
@@ -82,9 +88,15 @@
       });
 
     // 更换照片
-    btnChangeImage.addEventListener('click', () => {
+    function changeimage(){
       imageOverlay.src = 'images/lemon.png';
-    });
+    };
+    function image(){
+      const newImage = prompt('請自行输入想合照的完整網址：');
+      if (newImage) {
+        imageOverlay.src = newImage;
+      }
+    };
     function captureScreenshot() {
       html2canvas(document.body).then(function(canvas) {
         // 创建图像 URL
