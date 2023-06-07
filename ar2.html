@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html html lang="zh-tw">
+<head>
+  <title>显示镜头画面并叠加 VRM 模型</title>
+  <style>
+    #cameraContainer {
+      position: relative;
+      max-width: 400px;
+      height: 300px;
+      overflow: hidden;
+    }
+    
+    #cameraFrame {
+      width: 100%;
+      height: 100%;
+    }
+    
+    #vrmModel {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      pointer-events: none; /* 防止 VRM 模型干扰鼠标事件 */
+    }
+    
+    #switchBtn {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="cameraContainer">
+    <video id="cameraFrame" autoplay></video>
+    <canvas id="vrmModel"></canvas>
+  </div>
+
+  <button id="switchBtn">切换 VRM 模型</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.1/build/three-vrm.min.js"></script>
+  <script>
+    const cameraFrame = document.getElementById('cameraFrame');
+    const vrmModel = document.getElementById('vrmModel');
+    const switchBtn = document.getElementById('switchBtn');
+    let currentModelIndex = 0;
+    let vrm;
+
+    // 获取用户摄像头权限
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        cameraFrame.srcObject = stream;
+      })
+      .catch(error => {
+        console.log('摄像头访问失败：', error);
+      });
+
+    // 加载并显示初始 VRM 模型
+    loadVRMModel(currentModelIndex);
+
+    // 切换 VRM 模型
+    switchBtn.addEventListener('click', () => {
+      currentModelIndex = (currentModelIndex + 1) % 2; // 假设有两个 VRM 模型
+      loadVRMModel(currentModelIndex);
+    });
+
+    // 加载并显示 VRM 模型
+    function loadVRMModel(index) {
+      if (vrm) {
+        vrm.dispose();
+      }
+
+      const loader = new THREE.VRMLoader();
+      const modelPath = index === 0 ? 'E:\Me\L\Lemon\html5\images\NewKaidaAvatar.vrm' : 'E:\Me\L\Lemon\html5\images\LEMON_v7.vrm'; // 根据索引加载不同的 VRM 模型
+      loader.load(modelPath, (vrmResult) => {
+        vrm = vrmResult;
+        vrm.scene.rotation.y = Math.PI; // 可根据需要旋转模型
+        vrm.scene.scale.set(0.8, 0.8, 0.8); // 可根据需要调整模型的大小
+        vrmModel.width = vrm.scene.width;
+        vrmModel.height = vrm.scene.height;
+        vrmModel.getContext('2d').drawImage(vrm.scene, 0, 0);
+      });
+    }
+  </script>
+</body>
+</html>
