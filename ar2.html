@@ -69,7 +69,7 @@
       }
 
       const loader = new THREE.VRMLoader();
-      const modelPath = index === 0 ? 'E:\Me\L\Lemon\html5\images\NewKaidaAvatar.vrm' : 'E:\Me\L\Lemon\html5\images\LEMON_v7.vrm'; // 根据索引加载不同的 VRM 模型
+      const modelPath = index === 0 ? 'images/NewKaidaAvatar.vrm' : 'images/LEMON_v7.vrm'; // 根据索引加载不同的 VRM 模型
       loader.load(modelPath, (vrmResult) => {
         vrm = vrmResult;
         vrm.scene.rotation.y = Math.PI; // 可根据需要旋转模型
