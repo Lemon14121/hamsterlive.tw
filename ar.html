@@ -84,7 +84,7 @@
         videoPreview.srcObject = stream;
       })
       .catch(error => {
-        console.log('无法访问摄像头：', error);
+        console.log('無法讀取鏡頭：', error);
       });
 
     // 更换照片
@@ -98,21 +98,18 @@
       }
     };
     function captureScreenshot() {
-      html2canvas(document.body).then(function(canvas) {
-        // 创建图像 URL
+      html2canvas(document.getElementById('video-container')).then(function(canvas) {
+        
         const imageURL = canvas.toDataURL("image/png");
 
-        // 创建下载链接
         const downloadLink = document.createElement("a");
         downloadLink.href = imageURL;
         downloadLink.download = "screenshot.png";
         downloadLink.style.display = "none";
         document.body.appendChild(downloadLink);
 
-        // 模拟点击下载链接
         downloadLink.click();
 
-        // 移除下载链接
         document.body.removeChild(downloadLink);
       });
     }
