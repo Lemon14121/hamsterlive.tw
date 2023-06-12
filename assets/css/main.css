@@ -2653,19 +2653,19 @@ button {
 
 .vtubers{
 	display: grid;
-	grid-template-columns: 10px 60px;
-	grid-template-rows: 50px 100px;
+	grid-template-columns: 350px 250px;
+	grid-template-rows: 150px 50px;
 }
 .product{
 	position: relative;
-	width: 150px;
+	width: 200px;
 	aspect-ratio: 1/1;
 	display: grid;
 	place-content: center;
-	gap: 1px;
+	gap: 10px;
 	padding-inline: 20px;
 	text-align: center;
-	outline: 2px solid transparent;
+	outline: 4px solid transparent;
 	overflow: hidden;
 	transition: .5s;
 }
