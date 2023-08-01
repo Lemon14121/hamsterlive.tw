@@ -1887,6 +1887,10 @@ input, select, textarea {
 					background-color: #3983f0;
 				}
 
+				ul.social li a.fa-twitch {
+					background-color: #6f54ba;
+				}
+
 				ul.social li a:hover {
 					top: -5px;
 				}
