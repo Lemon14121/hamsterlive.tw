@@ -84,7 +84,7 @@
       .then(stream => {
         videoPreview.srcObject = stream;
 	videoPreview.style.transform = 'scaleX(-1)';
-      });
+      })
       .catch(error => {
         console.log('無法讀取鏡頭：', error);
       });
