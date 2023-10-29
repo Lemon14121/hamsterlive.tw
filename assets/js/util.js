@@ -517,6 +517,32 @@
 		return $this;
 
 	};
-
-
+	
+let slideIndex = 0;
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    let slider = document.getElementById("slider");
+    let slideWidth = slides[0].clientWidth; // 获取第一张轮播图片的宽度
+    let transformValue = -slideIndex * slideWidth;
+    slider.style.transform = "translateX(" + transformValue + "px)";
+}
+function plusSlides(n) {
+	slideIndex += n;
+	if (slideIndex >= 3) {
+		slideIndex = 0;
+	}
+	if (slideIndex < 0) {
+		slideIndex = 2;
+	}
+	showSlides();
+}				
+setInterval(function() { plusSlides(1); }, 3000);
+document.getElementById("prevBtn").addEventListener("click", function(){
+	plusSlides(-1);
+});
+document.getElementById("nextBtn").addEventListener("click", function(){
+	plusSlides(1);
+});
 })
+
+
