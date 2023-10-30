@@ -545,3 +545,94 @@ document.getElementById("prevBtn").addEventListener("click", function(){
 document.getElementById("nextBtn").addEventListener("click", function(){
 	plusSlides(1);
 });
+
+
+document.getElementById("div000").style.display="block";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+
+function show000(){
+document.getElementById("div000").style.display="block";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show0(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="block";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show00(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="block";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show01(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="block";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show02(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="block";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show1(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="block";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="none";
+}
+function show11(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="block";
+document.getElementById("div999").style.display="none";
+}
+function show999(){
+document.getElementById("div000").style.display="none";
+document.getElementById("div0").style.display="none";
+document.getElementById("div00").style.display="none";
+document.getElementById("div01").style.display="none";
+document.getElementById("div02").style.display="none";
+document.getElementById("div1").style.display="none";
+document.getElementById("div11").style.display="none";
+document.getElementById("div999").style.display="block";
+}
