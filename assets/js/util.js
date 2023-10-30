@@ -518,6 +518,8 @@
 
 	};
 	
+})
+
 let slideIndex = 0;
 function showSlides() {
     let slides = document.getElementsByClassName("slide");
@@ -528,11 +530,11 @@ function showSlides() {
 }
 function plusSlides(n) {
 	slideIndex += n;
-	if (slideIndex >= 3) {
+	if (slideIndex >= 2) {
 		slideIndex = 0;
 	}
 	if (slideIndex < 0) {
-		slideIndex = 2;
+		slideIndex = 1;
 	}
 	showSlides();
 }				
@@ -543,6 +545,3 @@ document.getElementById("prevBtn").addEventListener("click", function(){
 document.getElementById("nextBtn").addEventListener("click", function(){
 	plusSlides(1);
 });
-})
-
-
