@@ -530,7 +530,7 @@ function showSlides() {
 }
 function plusSlides(n) {
 	slideIndex += n;
-	if (slideIndex >= 2) {
+	if (slideIndex >= 1) {
 		slideIndex = 0;
 	}
 	if (slideIndex < 0) {
