@@ -518,23 +518,21 @@
 
 	};
 	
-})
-
 let slideIndex = 0;
 function showSlides() {
     let slides = document.getElementsByClassName("slide");
     let slider = document.getElementById("slider");
-    let slideWidth = slides[0].clientWidth; // 获取第一张轮播图片的宽度
+    let slideWidth = slides[0].clientWidth; // 第一張圖片的寬度
     let transformValue = -slideIndex * slideWidth;
     slider.style.transform = "translateX(" + transformValue + "px)";
 }
 function plusSlides(n) {
 	slideIndex += n;
-	if (slideIndex >= 1) {
+	if (slideIndex >= 3) {
 		slideIndex = 0;
 	}
 	if (slideIndex < 0) {
-		slideIndex = 1;
+		slideIndex = 2;
 	}
 	showSlides();
 }				
@@ -545,7 +543,7 @@ document.getElementById("prevBtn").addEventListener("click", function(){
 document.getElementById("nextBtn").addEventListener("click", function(){
 	plusSlides(1);
 });
-
+})
 
 
 function show0(){
@@ -595,4 +593,8 @@ function show98(){
 	document.getElementById("div2").style.display="none";
 	document.getElementById("div00").style.display="none";
 	document.getElementById("div99").style.display="none";
+}
+
+function changeImage(imagePath,button) {
+	document.getElementById('image-display').src = imagePath;
 }
