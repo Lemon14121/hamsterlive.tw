@@ -150,7 +150,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #c6c619;
+		color: #a3a32b;
 		margin: 0 0 0.75em 0;
 	}
 
@@ -2494,10 +2494,11 @@ body{
 	margin: 0 auto;
   }
   .card{
+	background-image: url('images/bg-masthead.png') ;
 	position: relative;
 	width: 200px;
 	float:left;
-	margin: 10px;
+	margin: 15px;
   }
   img{
 	display: block;
@@ -2508,7 +2509,6 @@ body{
 	object-fit: contain;
   }
   .info{
-  /*   display: none; */
 	opacity: 0;
 	position: absolute;
 	box-sizing: border-box;
@@ -2622,11 +2622,11 @@ button {
 
   .cont{
 	max-width: 100%;
-	height: 440px;
-	overflow-x: scroll;
+	height: 400px;
+	overflow: auto;
 	background-color: #ffa06a;
 	padding: 2%;
-	border-radius: 25px;
+	border-radius: 50px;
 	box-shadow: 0 4px 8px 0 #10BEF1, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .li-cont{
@@ -2646,6 +2646,7 @@ button {
 	grid-template-rows: 150px 50px;
 }
 .product{
+	background-image: url('images/bg-masthead.png');
 	position: relative;
 	width: 200px;
 	aspect-ratio: 1/1;
@@ -2668,7 +2669,6 @@ button {
 	transition: .5s;
 }
 .product:hover{
-	outline: 2px solid #0062DB;
 	outline-offset: -5px;
 }
 .product:hover > .product_bg{
@@ -2694,7 +2694,6 @@ button {
 .slider-container {
 	position: relative;
 	max-width: 100%;
-	height: 500px;
 	overflow: hidden; /* 隐藏溢出部分 */
 }
 .slider {
@@ -2715,8 +2714,7 @@ button {
 }
 .bttn {
 	position: absolute;
-	top: 0;
-	margin-top: 50%;
+	top: 50%;
 	background-color: #b77614;
 	color: rgb(255, 255, 255);
 	border: none;
@@ -2734,6 +2732,7 @@ button {
 	opacity: 1;
 }
 #prevBtn {
+	
 	left: 0;
 }
 #nextBtn {
