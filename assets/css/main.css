@@ -2045,96 +2045,94 @@ input, select, textarea {
 					background: #252525;
 				}
 
-				#nav {
-					background-color: #282828;
-					text-align: right;
-					position: fixed;
-					left: 0;
-					top: 0;
-					width: 100%;
-					z-index: 10000;
-					cursor: default;
-					height: 3.5em;
-					line-height: 3.5em;
-				}
-				
-				#nav ul {
-					margin-bottom: 0;
-					list-style: none;
-					padding-left: 0;
-				}
-				
-				#nav li {
-					display: inline-block;
-					padding-left: 0;
-				}
-				
-				#nav li.left {
-					float: left;
-				}
-				
-				#nav a {
-					-moz-transition: background-color .2s ease-in-out;
-					-webkit-transition: background-color .2s ease-in-out;
-					-ms-transition: background-color .2s ease-in-out;
-					transition: background-color .2s ease-in-out;
-					position: relative;
-					display: block;
-					color: #fff;
-					text-decoration: none;
-					outline: 0;
-					font-weight: 600;
-					border-radius: 8px;
-					color: #fff;
-					height: 2.5em;
-					line-height: 2.5em;
-					padding: 0 1.25em;
-				}
-				
-				#nav a img {
-					height: 100%;
-					width: auto;
-					vertical-align: middle;
-				}
-				
-				#nav a:hover {
-					color: #fff !important;
-					background: #383838;
-				}
-				
-				#nav a.active {
-					background: #484848;
-				}
-				
-				#nav a.active:before {
-					content: '';
-					display: block;
-					position: absolute;
-					bottom: -0.6em;
-					left: 50%;
-					margin-left: -0.75em;
-					border-left: solid 0.75em transparent;
-					border-right: solid 0.75em transparent;
-					border-top: solid 0.6em #282828;
-				}
-				
-				/* 新增样式 */
-				#nav ul.submenu {
-					display: none;
-					position: absolute;
-					background: #383838;
-					border-radius: 8px;
-					padding: 10px;
-				}
-				
-				#nav li:hover ul.submenu {
-					display: block;
-				}
-				
-				#nav li.submenu-item {
-					display: block;
-					margin: 10px 0;
-				}
+				/* Nav */
+#nav {
+    background-color: #282828;
+    text-align: right;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    cursor: default;
+    height: 3.5em;
+    line-height: 3.5em;
+}
+
+#nav ul {
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+#nav li {
+    display: inline-block;
+    padding-left: 0;
+}
+
+#nav li.left {
+    float: left;
+}
+
+#nav a {
+    -moz-transition: background-color .2s ease-in-out;
+    -webkit-transition: background-color .2s ease-in-out;
+    -ms-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+    position: relative;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    font-weight: 600;
+    border-radius: 8px;
+    color: #fff;
+    height: 2.5em;
+    line-height: 2.5em;
+    padding: 0 1.25em;
+}
+
+#nav a img {
+    height: 100%;
+    width: auto;
+    vertical-align: middle;
+}
+
+#nav a:hover {
+    color: #fff !important;
+    background: #383838;
+}
+
+#nav a.active {
+    background: #484848;
+}
+
+#nav a.active:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -0.6em;
+    left: 50%;
+    margin-left: -0.75em;
+    border-left: solid 0.75em transparent;
+    border-right: solid 0.75em transparent;
+    border-top: solid 0.6em #282828;
+}
+
+#nav ul.vertical {
+    text-align: left;
+    display: none; /* Hide the vertical list by default */
+    background: #282828; /* Set the background color for the dropdown menu */
+    position: absolute;
+    top: 3.5em; /* Adjust the top position to align with the main navigation bar */
+    right: 0;
+    width: 50%; /* Set the width to 50% of the parent container */
+    transform: translateX(50%); /* Center the dropdown menu horizontally */
+}
+#nav ul.vertical li {
+    display: block;
+    padding: 0.5em 0;
+}
 
 /* Articles */
 
