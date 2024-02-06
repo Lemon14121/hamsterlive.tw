@@ -14,45 +14,75 @@
 	<body class="is-preload">
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">首頁</a></li>
-					<li><a href="vtubers.html">旗下成員</a></li>
-					<li><a href="RT.html">RT招募</a></li>
-					<li><a href="studio.html">雷萌工作室</a></li>
-				</ul>
-			</nav>
-			<article id="come" class="wrapper style1">
-				<div>
-					<div class="row">
-						<div class="col-6 col-6-large col-12-medium">
-							<span class="image fit"><img src="images/bear.png" alt="小熊" /></span>
-						</div>
-						<div class="col-6 col-6-large col-12-medium">
-							<center><h1><strong>小熊</strong></h1></center>
-							<h3>bear</h3>
-							<p style="flex-direction:row-reverse">
-								<div style="text-align: left;">性別：女的</div>
-								<div style="text-align: left;">生日：09/18</div>
-								<div style="text-align: left;">身高/體重：168cm/53kg</div>
-								<div style="text-align: left;">年齡：18y</div>
-								<div style="text-align: left;">個性 ：活潑、好動、超外向</div>
-								<div style="text-align: left;">喜歡：冰淇淋、雷萌</div>
-								<p></p>
-								<div style="text-align: left;">來自森林裡的一隻迷路的小熊</div>
-								<p></p>
-								<div style="text-align: left;">小熊好可愛</div>
-
-								<div class="container medium">
-									<ul class="social">
-										<li><a href="https://reality.app/profile/8cd808f3?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
-									</ul>
-								</div>
-							</p>
+		<nav id="nav">
+			<ul>
+				<li class="left"><a href="index.html">Hamster Live</a></li>
+				<li><a href="vtubers.html">所有成員</a></li>
+				<li><a href="RT.html">RT招募</a></li>
+				<li><a href="#" onclick="downlist()">雷萌工作室</a>
+					<ul class="vertical">
+						<li><a href="studio.html" alt="台灣vtuber">雷萌工作室</a></li>
+						<li><a href="secondary_creation_guide.html">二次創作指南</a></li>
+						<li><a href="">合照</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<article id="come" class="wrapper style1" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('images/bear_2.png');background-size:60pc; background-position: 20% 5pc; background-attachment: fixed; background-repeat: no-repeat;">
+			<div class="container">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-1 col-1-large col-2-small">
+						<div class="circle-button" style="background-image: url('images/bear.png');" onclick="changeImage('images/bear.png')"></div>
+						<div class="circle-button" style="background-image: url('images/bear_2.png');" onclick="changeImage('images/bear_2.png')"></div>
+					</div>
+					<div class="col-4 col-5-large col-10-small">
+						<span class="image fit"><image src="images/bear.png" alt="小熊" id="image-display"></span>
+					</div>
+					<br>
+					<div class="col-6 col-5-large col-12-small" style="background-color:white;">
+						<center><h1><strong>小熊</strong></h1></center>
+						<h3>Bear</h3>
+						<p style="flex-direction:row-reverse;">
+							<div class="pc">來自森林裡的一隻迷路的小熊</div>
+							<br>
+							<div class="pc">小熊好可愛</div>
+						</p>	
+							<div class="container medium">
+								<ul class="social">
+									<li><a href="https://reality.app/profile/8cd808f3?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
+								</ul>
+							</div>
+					</div>
+					<div class="col-12 col-12-large col-12-small" style="background-color: bisque; margin: 10px;">
+						<div class="table-container">
+							<h3>資訊</h3>
+							<div class="table-row">
+								<h5>性別</h5><h5>女的</h5>
+						  </div>
+							<div class="table-row">
+								  <h5>身高/體重</h5><h5>168cm/53kg</h5>
+							</div>
+							<div class="table-row">
+								  <h5>年齡</h5><h5>18y</h5>
+							</div>
+							<div class="table-row">
+								<h5>生日</h5><h5>09/18</h5>
+							</div>
+							<div class="table-row">
+								  <h5>個性</h5><h5>活潑、好動、超外向</h5>
+							</div>
+							<div class="table-row">
+								  <h5>喜歡</h5><h5>冰淇淋、雷萌</h5>
+							</div>
+							<div class="table-row">
+								<h5>粉絲名</h5><h5></h5>
+							  </div>
 						</div>
 					</div>
 				</div>
-			</article>
+			</div>
+		</article>
+										
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
