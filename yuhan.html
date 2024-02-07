@@ -13,47 +13,78 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">首頁</a></li>
-					<li><a href="vtubers.html">旗下成員</a></li>
-					<li><a href="RT.html">RT招募</a></li>
-					<li><a href="studio.html">雷萌工作室</a></li>
-				</ul>
-			</nav>
-			<article id="come" class="wrapper style1">
-				<div>
-					<div class="row">
-						<div class="col-6 col-6-large col-12-medium">
-							<span class="image fit"><img src="images/Yuhan.png" alt="余涵想吃糖果" /></span>
-						</div>
-						<div class="col-6 col-6-large col-12-medium">
-							<center><h1><strong>余涵想吃糖果</strong></h1></center>
-							<h3>Yuhan</h3>
-							<p style="flex-direction:row-reverse">
-								<div style="text-align: left;">性別：女</div>
-								<div style="text-align: left;">生日：8/5</div>
-								<div style="text-align: left;">身高/體重：161cm/44kg</div>
-								<div style="text-align: left;">年齡：17y</div>
-								<div style="text-align: left;">個性 ：隨和</div>
-								<div style="text-align: left;">喜歡：看動漫、看漫畫、世界計畫、原神、崩壞:星穹鐵道</div>
-								<p></p>
-								<div style="text-align: left;">妖精裡的大屁孩，是妖精不是精靈喔!!!(注意)</div>
-								<p></p>
-								<div style="text-align: left;">粉丝名：小涵粉們</div>
-								<div class="container medium">
-									<ul class="social">
-										<li><a href="https://reality.app/profile/9cc21307?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
-										<li><a href="https://www.youtube.com/@Imamfish" class="icon brands fa-youtube"><span></span>YouTube</a></li>
-										<li><a href="https://www.tiktok.com/@yuhan824" class="icon brands fa-dribbble"><span></span>Tiktok</a></li>
-									</ul>
-								</div>
-							</p>
+		<nav id="nav">
+			<ul>
+				<li class="left"><a href="index.html">Hamster Live</a></li>
+				<li><a href="vtubers.html">所有成員</a></li>
+				<li><a href="RT.html">RT招募</a></li>
+				<li><a href="#" onclick="downlist()">雷萌工作室</a>
+					<ul class="vertical">
+						<li><a href="studio.html" alt="台灣vtuber">雷萌工作室</a></li>
+						<li><a href="secondary_creation_guide.html">二次創作指南</a></li>
+						<li><a href="">合照</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<article id="come" class="wrapper style1" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('images/Yuhan_2.png');background-size:60pc; background-position: 20% 5pc; background-attachment: fixed; background-repeat: no-repeat;">
+			<div class="container">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-1 col-1-large col-2-small">
+						<div class="circle-button" style="background-image: url('images/Yuhan.png');" onclick="changeImage('images/Yuhan.png')"></div>
+						<div class="circle-button" style="background-image: url('images/Yuhan_2.png');" onclick="changeImage('images/Yuhan_2.png')"></div>
+					</div>
+					<div class="col-4 col-5-large col-10-small">
+						<span class="image fit"><image src="images/Yuhan.png" alt="余涵想吃糖果" id="image-display"></span>
+					</div>
+					<br>
+					<div class="col-6 col-5-large col-12-small" style="background-color:white;">
+						<center><h1><strong>余涵想吃糖果</strong></h1></center>
+						<h3>Yuhan</h3>
+						<p style="flex-direction:row-reverse;">
+							<div class="pc"></div>
+							<br>
+							<div class="pc">妖精裡的大屁孩，是妖精不是精靈喔!!!(注意)</div>
+						</p>	
+							<div class="container medium">
+								<ul class="social">
+									<li><a href="https://reality.app/profile/9cc21307?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
+									<li><a href="https://www.youtube.com/@Imamfish" class="icon brands fa-youtube"><span></span>YouTube</a></li>
+									<li><a href="https://www.tiktok.com/@yuhan824" class="icon brands fa-dribbble"><span></span>Tiktok</a></li>
+								</ul>
+							</div>
+					</div>
+					<div class="col-12 col-12-large col-12-small" style="background-color: bisque; margin: 10px;">
+						<div class="table-container">
+							<h3>資訊</h3>
+							<div class="table-row">
+								<h5>性別</h5><h5>女</h5>
+							</div>
+							<div class="table-row">
+								<h5>身高/體重</h5><h5>161cm/44kg</h5>
+							</div>
+							<div class="table-row">
+								<h5>年齡</h5><h5>17y</h5>
+							</div>
+							<div class="table-row">
+								<h5>生日</h5><h5>8/5</h5>
+							</div>
+							<div class="table-row">
+								<h5>個性</h5><h5>隨和</h5>
+							</div>
+							<div class="table-row">
+								<h5>喜歡</h5><h5>看動漫、看漫畫、世界計畫、原神、崩壞:星穹鐵道</h5>
+							</div>
+							<div class="table-row">
+								<h5>粉絲名</h5><h5>小涵粉們</h5>
+							</div>
 						</div>
 					</div>
 				</div>
-			</article>
+			</div>
+		</article>
+							
+									
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

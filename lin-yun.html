@@ -14,46 +14,74 @@
 	<body class="is-preload">
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">首頁</a></li>
-					<li><a href="vtubers.html">旗下成員</a></li>
-					<li><a href="RT.html">RT招募</a></li>
-					<li><a href="studio.html">雷萌工作室</a></li>
-				</ul>
-			</nav>
-			<article id="come" class="wrapper style1">
-				<div>
-					<div class="row">
-						<div class="col-6 col-6-large col-12-medium">
-							<span class="image fit"><img src="images/LinYun.png" alt="凜紜" /></span>
-						</div>
-						<div class="col-6 col-6-large col-12-medium">
-							<center><h1><strong>凜紜</strong></h1></center>
-							<h3>Lin Yun</h3>
-							<p style="flex-direction:row-reverse">
-								<div style="text-align: left;">性別：女</div>
-								<div style="text-align: left;">生日：03/12</div>
-								<div style="text-align: left;">身高/體重：160/46(吸完血後的</div>
-								<div style="text-align: left;">年齡：480y（換算人類16y</div>
-								<div style="text-align: left;">個性 ：很ㄎ一ㄤ 很害羞(＞人＜;)</div>
-								<div style="text-align: left;">喜歡：唱歌 聽歌 還有….你們人類做的食物蠻好吃的</div>
-								<p></p>
-								<div style="text-align: left;">還未行成年禮的一隻幼年吸血鬼，每天都想著希望可以當吸血女王（吸血鬼王每三百年換一任)</div>
-								<div style="text-align: left;">原本以為會以輕鬆的方式去準備成年禮，結果父母跟我說每個人的成年禮方式會依照個性而有所不同，我的方式是需要足夠的人氣，到了成年禮當天才會通過</div>
-								<div style="text-align: left;">所以….我就被送來這裡了^ - ^</div>
-								<p></p>
-								<div style="text-align: left;">粉丝名：我的雲朵們</div>
-								<div class="container medium">
-									<ul class="social">
-										<li><a href="https://reality.app/profile/8f6a5fd7?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
-									</ul>
-								</div>
-							</p>
+		<nav id="nav">
+			<ul>
+				<li class="left"><a href="index.html">Hamster Live</a></li>
+				<li><a href="vtubers.html">所有成員</a></li>
+				<li><a href="RT.html">RT招募</a></li>
+				<li><a href="#" onclick="downlist()">雷萌工作室</a>
+					<ul class="vertical">
+						<li><a href="studio.html" alt="台灣vtuber">雷萌工作室</a></li>
+						<li><a href="secondary_creation_guide.html">二次創作指南</a></li>
+						<li><a href="">合照</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<article id="come" class="wrapper style1" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('images/LinYun_2.png');background-size:60pc; background-position: 20% 5pc; background-attachment: fixed; background-repeat: no-repeat;">
+			<div class="container">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-1 col-1-large col-2-small">
+						<div class="circle-button" style="background-image: url('images/LinYun.png');" onclick="changeImage('images/LinYun.png')"></div>
+						<div class="circle-button" style="background-image: url('images/LinYun_2.png');" onclick="changeImage('images/LinYun_2.png')"></div>
+					</div>
+					<div class="col-4 col-5-large col-10-small">
+						<span class="image fit"><image src="images/LinYun.png" alt="凜紜" id="image-display"></span>
+					</div>
+					<br>
+					<div class="col-6 col-5-large col-12-small" style="background-color:white;">
+						<center><h1><strong>凜紜</strong></h1></center>
+						<h3>LinYun</h3>
+						<p style="flex-direction:row-reverse;">
+							<div class="pc">還未行成年禮的一隻幼年吸血鬼，每天都想著希望可以當吸血女王（吸血鬼王每三百年換一任)</div>
+							<br>
+							<div class="pc">原本以為會以輕鬆的方式去準備成年禮，結果父母跟我說每個人的成年禮方式會依照個性而有所不同，我的方式是需要足夠的人氣，到了成年禮當天才會通過。所以….我就被送來這裡了^ - ^</div>
+						</p>	
+							<div class="container medium">
+								<ul class="social">
+									<li><a href="https://reality.app/profile/8f6a5fd7?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
+								</ul>
+							</div>
+					</div>
+					<div class="col-12 col-12-large col-12-small" style="background-color: bisque; margin: 10px;">
+						<div class="table-container">
+							<h3>資訊</h3>
+							<div class="table-row">
+								<h5>性別</h5><h5>女</h5>
+						  	</div>
+							<div class="table-row">
+								  <h5>身高/體重</h5><h5>160/46(吸完血後的</h5>
+							</div>
+							<div class="table-row">
+								  <h5>年齡</h5><h5>480y（換算人類16y</h5>
+							</div>
+							<div class="table-row">
+								<h5>生日</h5><h5>03/12</h5>
+							</div>
+							<div class="table-row">
+								  <h5>個性</h5><h5>很ㄎ一ㄤ 很害羞(＞人＜;)</h5>
+							</div>
+							<div class="table-row">
+								  <h5>喜歡</h5><h5>唱歌 聽歌 還有….你們人類做的食物蠻好吃的</h5>
+							</div>
+							<div class="table-row">
+								<h5>粉絲名</h5><h5>我的雲朵們</h5>
+							  </div>
 						</div>
 					</div>
 				</div>
-			</article>
+			</div>
+		</article>
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>

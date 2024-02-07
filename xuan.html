@@ -13,51 +13,89 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">首頁</a></li>
-					<li><a href="vtubers.html">旗下成員</a></li>
-					<li><a href="RT.html">RT招募</a></li>
-					<li><a href="studio.html">雷萌工作室</a></li>
-				</ul>
-			</nav>
-			<article id="come" class="wrapper style1">
-				<div>
-					<div class="row">
-						<div class="col-6 col-6-large col-12-medium">
-							<span class="image fit"><img src="images/Xuan.png" alt="筱萱" /></span>
-						</div>
-						<div class="col-6 col-6-large col-12-medium">
-							<center><h1><strong>筱萱</strong></h1></center>
-							<h3>Xuan</h3>
-							<p style="flex-direction:row-reverse">
-                                <div style="text-align: left;">綽號：樹懶（因為很懶w</div>
-								<div style="text-align: left;">性別：女ㄉ</div>
-								<div style="text-align: left;">身高/體重：163cm/45kg</div>
-								<div style="text-align: left;">年齡：14y</div>
-								<div style="text-align: left;">個性 ：文靜、隨和</div>
-								<div style="text-align: left;">喜歡：打手遊、追劇、宅在家裡</div>
-								<div style="text-align: left;">不喜歡：出門、運動</div>
-								<div style="text-align: left;">喜歡吃的食物：咔啦雞腿堡、草莓、泡麵</div>
-                                <div style="text-align: left;">不喜歡吃的食物：苦瓜、青椒、秋葵、芹菜</div>
-								<p></p>
-								<div style="text-align: left;">萱原本是森林中一位貓之精靈，後來因棲息地被破壞，逼不得已來到了別處，之後發現了直播這個東西，於是為了恢復棲息地的生態而開始了直播</div>
-								<p></p>
-								<div style="text-align: left;">哈囉～各位安安呀～，我叫筱萱Xuan，大家可以叫我萱就可以嘍～(〃'▽'〃) </div>
-								<div style="text-align: left;">粉絲名：浣熊</div>
-								<div class="container medium">
-									<ul class="social">
-										<li><a href="https://reality.app/profile/cfae7f11?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
-										<li><a href="https://twitter.com/CYL94160198" class="icon brands fa-twitter"><span class="label">Twitter</span>Twitter</a></li>
-										<li><a href="https://www.youtube.com/@xuancyl" class="icon brands fa-youtube"><span></span>YouTube</a></li>
-									</ul>
-								</div>
-							</p>
+		<nav id="nav">
+			<ul>
+				<li class="left"><a href="index.html">Hamster Live</a></li>
+				<li><a href="vtubers.html">所有成員</a></li>
+				<li><a href="RT.html">RT招募</a></li>
+				<li><a href="#" onclick="downlist()">雷萌工作室</a>
+					<ul class="vertical">
+						<li><a href="studio.html" alt="台灣vtuber">雷萌工作室</a></li>
+						<li><a href="secondary_creation_guide.html">二次創作指南</a></li>
+						<li><a href="">合照</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<article id="come" class="wrapper style1" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('images/Xuan_2.png');background-size:60pc; background-position: 20% 5pc; background-attachment: fixed; background-repeat: no-repeat;">
+			<div class="container">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-1 col-1-large col-2-small">
+						<div class="circle-button" style="background-image: url('images/Xuan.png');" onclick="changeImage('images/Xuan.png')"></div>
+						<div class="circle-button" style="background-image: url('images/Xuan_2.png');" onclick="changeImage('images/Xuan_2.png')"></div>
+					</div>
+					<div class="col-4 col-5-large col-10-small">
+						<span class="image fit"><image src="images/Xuan.png" alt="筱萱" id="image-display"></span>
+					</div>
+					<br>
+					<div class="col-6 col-5-large col-12-small" style="background-color:white;">
+						<center><h1><strong>筱萱</strong></h1></center>
+						<h3>Xuan</h3>
+						<p style="flex-direction:row-reverse;">
+							<div class="pc">萱原本是森林中一位貓之精靈，後來因棲息地被破壞，逼不得已來到了別處，之後發現了直播這個東西，於是為了恢復棲息地的生態而開始了直播</div>
+							<br>
+							<div class="pc">哈囉～各位安安呀～，我叫筱萱Xuan，大家可以叫我萱就可以嘍～(〃'▽'〃)</div>
+						</p>	
+							<div class="container medium">
+								<ul class="social">
+									<li><a href="https://reality.app/profile/cfae7f11?adj_t=8ogcewh_z9yhix5" class="icon brands fa-dribbble"><span class="label"></span>Reality</a></li>
+									<li><a href="https://twitter.com/CYL94160198" class="icon brands fa-twitter"><span class="label">Twitter</span>Twitter</a></li>
+									<li><a href="https://www.youtube.com/@xuancyl" class="icon brands fa-youtube"><span></span>YouTube</a></li>
+								</ul>
+							</div>
+					</div>
+					<div class="col-12 col-12-large col-12-small" style="background-color: bisque; margin: 10px;">
+						<div class="table-container">
+							<h3>資訊</h3>
+							<div class="table-row">
+								<h5>性別</h5><h5>女ㄉ</h5>
+							</div>
+							<div class="table-row">
+								<h5>身高/體重</h5><h5>163cm/45kg</h5>
+							</div>
+							<div class="table-row">
+								<h5>年齡</h5><h5>14y</h5>
+							</div>
+							<div class="table-row">
+								<h5>生日</h5><h5></h5>
+							</div>
+							<div class="table-row">
+								<h5>個性</h5><h5>文靜、隨和</h5>
+							</div>
+							<div class="table-row">
+								<h5>喜歡</h5><h5>打手遊、追劇、宅在家裡</h5>
+							</div>
+							<div class="table-row">
+								<h5>不喜歡</h5><h5>出門、運動</h5>
+							</div>
+							<div class="table-row">
+								<h5>喜歡吃的食物</h5><h5>咔啦雞腿堡、草莓、泡麵</h5>
+							</div>
+							<div class="table-row">
+								<h5>不喜歡吃的食物</h5><h5>苦瓜、青椒、秋葵、芹菜</h5>
+							</div>
+							<div class="table-row">
+								<h5>綽號</h5><h5>樹懶（因為很懶w</h5>
+							</div>
+							<div class="table-row">
+								<h5>粉絲名</h5><h5>浣熊</h5>
+							</div>
 						</div>
 					</div>
 				</div>
-			</article>
+			</div>
+		</article>
+							
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
