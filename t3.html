@@ -130,10 +130,13 @@
                 downloadLink.style.display = "none";
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
+                
+                // Remove the download link after the download is initiated
                 document.body.removeChild(downloadLink);
             };
         }
         
+
 
 
     </script>
