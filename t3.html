@@ -115,21 +115,25 @@
             // Draw the video preview onto the canvas
             context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
             
-            // Draw the overlay image onto the canvas
-            context.drawImage(imageOverlay, 0, 0, imageOverlay.width, imageOverlay.height);
-            
-            // Convert the canvas to data URL
-            const imageURL = canvas.toDataURL('image/png');
-            
-            // Create download link
-            const downloadLink = document.createElement("a");
-            downloadLink.href = imageURL;
-            downloadLink.download = "screenshot.png";
-            downloadLink.style.display = "none";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            // Ensure the overlay image is fully loaded before drawing it onto the canvas
+            imageOverlay.onload = function() {
+                // Draw the overlay image onto the canvas
+                context.drawImage(imageOverlay, 0, 0, imageOverlay.width, imageOverlay.height);
+                
+                // Convert the canvas to data URL
+                const imageURL = canvas.toDataURL('image/png');
+                
+                // Create download link
+                const downloadLink = document.createElement("a");
+                downloadLink.href = imageURL;
+                downloadLink.download = "screenshot.png";
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            };
         }
+        
 
 
     </script>
