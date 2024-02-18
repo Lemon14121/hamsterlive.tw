@@ -20,7 +20,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scaleX(-1); /* 水平翻转 */
+            
         }
 
         #image-overlay {
@@ -73,15 +73,24 @@
         let initialScale;
 
         // 获取摄像头画面
-        navigator.mediaDevices.getUserMedia({video: true})
+        navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
-                videoPreview.srcObject = stream;
-                videoPreview.style.transform = 'scaleX(-1)';
+                // 创建一个容器元素来包裹视频元素
+                const container = document.createElement('div');
+                container.style.transform = 'scaleX(-1)';
+                container.style.display = 'inline-block'; // 确保容器可以正确显示
+                // 将视频元素放入容器中
+                container.appendChild(videoPreview);
+                // 找到原来的框架容器并替换子元素
+                const originalContainer = document.getElementById('video-container');
+                originalContainer.innerHTML = ''; // 清空原容器
+                originalContainer.appendChild(container); // 将新容器添加到原容器中
             })
             .catch(error => {
                 console.log('無法讀取鏡頭：', error);
             });
-
+        
+            
         // 更换照片
         function changeimage() {
             imageOverlay.src = 'images/Lemon_2.png';
