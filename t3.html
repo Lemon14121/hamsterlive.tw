@@ -163,17 +163,17 @@
         }
 
         function captureScreenshot() {
-            html2canvas(document.getElementById('video-container')).then(function (canvas) {
-                const imageURL = canvas.toDataURL("image/png");
-                const downloadLink = document.createElement("a");
-
-                downloadLink.href = imageURL;
-                downloadLink.download = "screenshot.png";
-                downloadLink.style.display = "none";
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink); ''
-            });
+          html2canvas(document.getElementById('video-container')).then(function(canvas) {
+            const imageURL = canvas.toDataURL("image/png");
+            const downloadLink = document.createElement("a");
+        
+            downloadLink.href = imageURL;
+            downloadLink.download = "screenshot.png";
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);''
+          });
         }
     </script>
 </article>
