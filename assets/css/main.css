@@ -2001,7 +2001,7 @@ input, select, textarea {
 	.wrapper {
 		background-image: url("images/bg.png");
 		box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.05), inset 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-		padding: 8em 0 8em 0;
+		padding: 2em 0 2em 0;
 		text-align: center;
 	}
 
@@ -2417,7 +2417,7 @@ input, select, textarea {
 		/* Wrappers */
 
 			.wrapper {
-				padding: 3em 0;
+				padding: 0em 0;
 				text-align: center;
 			}
 
@@ -2517,7 +2517,7 @@ body{
   }
   img{
 	display: block;
-	width: 200px;
+	max-width: 100%;
 	height: auto;
   }
   .contain {
@@ -2628,7 +2628,7 @@ button {
 	color: #fff;
   }
   .come{
-	background-color: #FEC979;
+	background-color: #edae6e;
   }
   .second{
 	background-color: #edae6e;
