@@ -11,8 +11,8 @@
         #video-container {
             margin-top: 1;
             position: relative;
-            width: 360px;
-            height: 360px;
+            width: 400px;
+            height: 400px;
             overflow: hidden;
         }
 
@@ -75,21 +75,20 @@
         // 获取摄像头画面
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
+                // 应用摄像头画面到视频元素
+                videoPreview.srcObject = stream;
                 // 创建一个容器元素来包裹视频元素
                 const container = document.createElement('div');
                 container.style.transform = 'scaleX(-1)';
-                container.style.display = 'inline-block'; // 确保容器可以正确显示
+                container.style.display = 'inline-block'; 
                 // 将视频元素放入容器中
-                container.appendChild(videoPreview);
-                // 找到原来的框架容器并替换子元素
-                const originalContainer = document.getElementById('video-container');
-                originalContainer.innerHTML = ''; // 清空原容器
-                originalContainer.appendChild(container); // 将新容器添加到原容器中
+                container.appendChild(video-preview);
+                // 将容器添加到文档中
+                document.body.appendChild(container);
             })
             .catch(error => {
                 console.log('無法讀取鏡頭：', error);
             });
-        
             
         // 更换照片
         function changeimage() {
@@ -163,17 +162,17 @@
         }
 
         function captureScreenshot() {
-          html2canvas(document.getElementById('video-container')).then(function(canvas) {
-            const imageURL = canvas.toDataURL("image/png");
-            const downloadLink = document.createElement("a");
-        
-            downloadLink.href = imageURL;
-            downloadLink.download = "screenshot.png";
-            downloadLink.style.display = "none";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);''
-          });
+            html2canvas(document.getElementById('video-container')).then(function (canvas) {
+                const imageURL = canvas.toDataURL("image/png");
+                const downloadLink = document.createElement("a");
+
+                downloadLink.href = imageURL;
+                downloadLink.download = "screenshot.png";
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink); ''
+            });
         }
     </script>
 </article>
