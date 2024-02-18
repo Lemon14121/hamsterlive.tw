@@ -605,3 +605,108 @@ function downlist() {
 	var verticalList = document.querySelector('#nav ul.vertical');
 	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
 }
+
+const videoPreview = document.getElementById('video-preview');
+const imageOverlay = document.getElementById('image-overlay');
+let lastX, lastY;
+let isDragging = false;
+let initialDistance;
+let initialScale;
+// 获取摄像头画面
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        // 应用摄像头画面到视频元素
+        videoPreview.srcObject = stream;
+        // 创建一个容器元素来包裹视频元素
+        const container = document.createElement('div');
+        container.style.transform = 'scaleX(-1)';
+        container.style.display = 'inline-block'; // 确保容器可以正确显示
+        // 将视频元素放入容器中
+        container.appendChild(videoPreview);
+        // 将容器添加回原来的框架内
+        const videoContainer = document.getElementById('video-container');
+        videoContainer.appendChild(container);
+    })
+    .catch(error => {
+        console.log('無法讀取鏡頭：', error);
+    });
+
+
+    
+// 更换照片
+function changeimage() {
+    imageOverlay.src = 'images/Lemon_2.png';
+}
+function image() {
+    const newImage = prompt('請自行输入想合照的完整網址：');
+    if (newImage) {
+        imageOverlay.src = newImage;
+    }
+}
+// 拖动图片
+imageOverlay.addEventListener('mousedown', startDragging);
+imageOverlay.addEventListener('mouseup', stopDragging);
+imageOverlay.addEventListener('mousemove', dragImage);
+
+// 触摸设备上的拖动
+imageOverlay.addEventListener('touchstart', startDragging);
+imageOverlay.addEventListener('touchend', stopDragging);
+imageOverlay.addEventListener('touchmove', dragImage);
+function startDragging(e) {
+    isDragging = true;
+    if (e.touches && e.touches.length === 1) {
+        const touch = e.touches[0];
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+    } else if (e.touches && e.touches.length === 2) {
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        initialDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+        initialScale = parseFloat(getComputedStyle(imageOverlay).transform.split(',')[3].trim());
+    } else {
+        lastX = e.clientX;
+        lastY = e.clientY;
+    }
+}
+function stopDragging() {
+    isDragging = false;
+}
+function dragImage(e) {
+    if (isDragging) {
+        e.preventDefault();
+        if (e.touches && e.touches.length === 1) {
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - lastX;
+            const deltaY = touch.clientY - lastY;
+            imageOverlay.style.left = parseFloat(getComputedStyle(imageOverlay).left) + deltaX + 'px';
+            imageOverlay.style.top = parseFloat(getComputedStyle(imageOverlay).top) + deltaY + 'px';
+            lastX = touch.clientX;
+            lastY = touch.clientY;
+        } else if (e.touches && e.touches.length === 2) {
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+            const scale = distance / initialDistance * initialScale;
+            imageOverlay.style.transform = `scale(${scale})`;
+        } else {
+            const deltaX = e.clientX - lastX;
+            const deltaY = e.clientY - lastY;
+            imageOverlay.style.left = parseFloat(getComputedStyle(imageOverlay).left) + deltaX + 'px';
+            imageOverlay.style.top = parseFloat(getComputedStyle(imageOverlay).top) + deltaY + 'px';
+            lastX = e.clientX;
+            lastY = e.clientY;
+        }
+    }
+}
+function captureScreenshot() {
+    html2canvas(document.getElementById('video-container')).then(function (canvas) {
+        const imageURL = canvas.toDataURL("image/png");
+        const downloadLink = document.createElement("a");
+        downloadLink.href = imageURL;
+        downloadLink.download = "screenshot.png";
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink); ''
+    });
+}
