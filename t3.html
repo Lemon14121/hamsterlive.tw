@@ -104,18 +104,30 @@
 
         // 截图功能
         function captureScreenshot() {
-            html2canvas(document.getElementById('video-container')).then(function(canvas) {
-                const imageURL = canvas.toDataURL("image/png");
-                const downloadLink = document.createElement("a");
-
-                downloadLink.href = imageURL;
-                downloadLink.download = "screenshot.png";
-                downloadLink.style.display = "none";
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-            });
+            // Create a canvas element
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            
+            // Flip the canvas horizontally
+            canvas.width = videoPreview.videoWidth;
+            canvas.height = videoPreview.videoHeight;
+            context.translate(canvas.width, 0);
+            context.scale(-1, 1);
+            context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
+            
+            // Convert the canvas to data URL
+            const imageURL = canvas.toDataURL('image/png');
+            
+            // Create download link
+            const downloadLink = document.createElement("a");
+            downloadLink.href = imageURL;
+            downloadLink.download = "screenshot.png";
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
         }
+        
     </script>
 </article>
   
