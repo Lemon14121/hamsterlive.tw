@@ -33,6 +33,7 @@
             cursor: move; /* 光标指示可拖动 */
             user-select: none; /* 防止选中文本 */
             border: 2px dashed red; /* 边框样式，可选 */
+            transform: scaleX(-1); /* 水平翻转 */
         }
 
         #btn-change-image {
@@ -154,24 +155,17 @@
 
         function captureScreenshot() {
             html2canvas(document.getElementById('video-container')).then(function (canvas) {
-                const context = canvas.getContext('2d');
-                // 水平翻转画布
-                context.translate(canvas.width, 0);
-                context.scale(-1, 1);
-                context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
-                // 获取翻转后的图像数据
                 const imageURL = canvas.toDataURL("image/png");
                 const downloadLink = document.createElement("a");
-            
+
                 downloadLink.href = imageURL;
                 downloadLink.download = "screenshot.png";
                 downloadLink.style.display = "none";
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
-                document.body.removeChild(downloadLink);
+                document.body.removeChild(downloadLink); ''
             });
         }
-        
     </script>
 </article>
 
