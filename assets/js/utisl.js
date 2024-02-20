@@ -89,14 +89,22 @@ function dragImage(e) {
     }
 }
 function captureScreenshot() {
-    html2canvas(document.getElementById('video-container')).then(function (canvas) {
-        const imageURL = canvas.toDataURL("image/png");
-        const downloadLink = document.createElement("a");
-        downloadLink.href = imageURL;
-        downloadLink.download = "usie.png";
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    });
+    // 取得 video-container 元素
+    var videoContainer = document.getElementById('video-container');
+
+    // 建立一個畫布元素，將 video-container 內容繪製到畫布上
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = videoContainer.offsetWidth;
+    canvas.height = videoContainer.offsetHeight;
+    ctx.drawImage(videoContainer, 0, 0, canvas.width, canvas.height);
+
+    // 將畫布轉換為圖片
+    var dataURL = canvas.toDataURL('image/png');
+
+    // 建立一個<a>元素，將圖片下載為文件
+    var link = document.createElement('a');
+    link.download = 'usie.png';
+    link.href = dataURL;
+    link.click();
 }
