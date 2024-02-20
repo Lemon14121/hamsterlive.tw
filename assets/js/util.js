@@ -600,9 +600,6 @@ function show98(){
 function changeImage(imagePath,button) {
 	document.getElementById('image-display').src = imagePath;
 }
- function changeImage(imagePath,button) {
-	 document.getElementById('image-overlay').src = imagePath;
-}
 function downlist() {
 	var verticalList = document.querySelector('#nav ul.vertical');
 	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
