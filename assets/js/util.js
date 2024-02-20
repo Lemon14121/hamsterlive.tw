@@ -600,7 +600,9 @@ function show98(){
 function changeImage(imagePath,button) {
 	document.getElementById('image-display').src = imagePath;
 }
-
+ function changeImage(imagePath,button) {
+	 document.getElementById('image-overlay').src = imagePath;
+}
 function downlist() {
 	var verticalList = document.querySelector('#nav ul.vertical');
 	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
@@ -634,9 +636,6 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
     
 // 更换照片
-function changeimage() {
-    imageOverlay.src = 'images/Lemon_2.png';
-}
 function image() {
     const newImage = prompt('請自行输入想合照的完整網址：');
     if (newImage) {
