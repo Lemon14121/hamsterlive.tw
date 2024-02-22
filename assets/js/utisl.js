@@ -88,7 +88,19 @@ function dragImage(e) {
         }
     }
 }
-document.getElementById("download").addEventListener("click", (function(e) {
-    e.preventDefault(),
-    t("video-container")
-});
+function captureContent() {
+    // 取得要截取的元素
+    var element = document.getElementById('video-container');
+
+    // 使用html2canvas庫來將元素轉換為圖片
+    html2canvas(element).then(function(canvas) {
+        // 將canvas轉換為圖片URL
+        var imgURL = canvas.toDataURL();
+
+        // 建立一個<a>元素來下載圖片
+        var link = document.createElement('a');
+        link.download = 'screenshot.png';
+        link.href = imgURL;
+        link.click();
+    });
+}
