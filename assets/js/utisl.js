@@ -89,14 +89,23 @@ function dragImage(e) {
     }
 }
 function captureScreenshot() {
-    var videoContainer = document.getElementById('video-container');
-
-    html2canvas(videoContainer, {
-        onrendered: function(canvas) {
-            var link = document.createElement('a');
-            link.download = 'screenshot.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }
-    });
+    // 获取要截图的元素
+    var container = document.getElementById('video-container');
+    
+    // 创建一个 canvas 元素
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    
+    // 设置 canvas 的尺寸和要截图的元素一样
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+    
+    // 将要截图的元素绘制到 canvas 上
+    ctx.drawImage(container, 0, 0, canvas.width, canvas.height);
+    
+    // 将 canvas 转换为图片并下载
+    var link = document.createElement('a');
+    link.download = 'screenshot.png';
+    link.href = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
+    link.click();
 }
