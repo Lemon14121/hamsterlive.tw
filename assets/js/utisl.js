@@ -91,15 +91,12 @@ function dragImage(e) {
 function captureScreenshot() {
     var videoContainer = document.getElementById('video-container');
 
-    var canvas = document.createElement('canvas');
-    canvas.width = videoContainer.offsetWidth;
-    canvas.height = videoContainer.offsetHeight;
-    var ctx = canvas.getContext('2d');
-
-    ctx.drawImage(videoContainer, 0, 0, canvas.width, canvas.height);
-
-    var link = document.createElement('a');
-    link.download = 'screenshot.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    html2canvas(videoContainer, {
+        onrendered: function(canvas) {
+            var link = document.createElement('a');
+            link.download = 'screenshot.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    });
 }
