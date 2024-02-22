@@ -88,19 +88,22 @@ function dragImage(e) {
         }
     }
 }
-function captureContent() {
-    // 取得要截取的元素
-    var element = document.getElementById('video-container');
+function captureScreenshot() {
+    var videoContainer = document.getElementById('video-container');
+    var video = document.getElementById('video-preview');
+    var overlay = document.getElementById('image-overlay');
 
-    // 使用html2canvas庫來將元素轉換為圖片
-    html2canvas(element).then(function(canvas) {
-        // 將canvas轉換為圖片URL
-        var imgURL = canvas.toDataURL();
+    var canvas = document.createElement('canvas');
+    canvas.width = videoContainer.offsetWidth;
+    canvas.height = videoContainer.offsetHeight;
+    var ctx = canvas.getContext('2d');
 
-        // 建立一個<a>元素來下載圖片
-        var link = document.createElement('a');
-        link.download = 'screenshot.png';
-        link.href = imgURL;
-        link.click();
-    });
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 1; // Adjust this value to control overlay opacity
+    ctx.drawImage(overlay, lastX, lastY, canvas.width, canvas.height);
+
+    var link = document.createElement('a');
+    link.download = 'screenshot.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
 }
