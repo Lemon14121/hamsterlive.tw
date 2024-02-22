@@ -90,33 +90,28 @@ function dragImage(e) {
 }
 // 假設有一個名為captureScreenshot的按鈕，並且video-container是包含要截圖的視頻的框架
 
-// 按下按鈕時的事件處理函式
 function captureScreenshot() {
-    // 找到video-container框架
     var videoContainer = document.getElementById('video-container');
+    // 假設video元素是video-container的第一個子元素
+    var videoElement = videoContainer.querySelector('video');
 
-    // 創建一個<canvas>元素，用於在其中繪製視頻幀
     var canvas = document.createElement('canvas');
-    canvas.width = videoContainer.clientWidth;
-    canvas.height = videoContainer.clientHeight;
+    canvas.width = videoElement.videoWidth;
+    canvas.height = videoElement.videoHeight;
     var ctx = canvas.getContext('2d');
 
-    // 將視頻框架內容繪製到<canvas>上
-    ctx.drawImage(videoContainer, 0, 0, canvas.width, canvas.height);
+    // 將video元素內容繪製到canvas上
+    ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
-    // 將<canvas>轉換為圖片數據URL
     var dataURL = canvas.toDataURL('image/png');
 
-    // 創建一個<a>元素來下載圖片
     var link = document.createElement('a');
     link.href = dataURL;
     link.download = 'screenshot.png';
 
-    // 將<a>元素添加到文檔中並點擊它以觸發下載
     document.body.appendChild(link);
     link.click();
 
-    // 清理創建的元素
     document.body.removeChild(link);
     document.body.removeChild(canvas);
 }
