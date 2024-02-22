@@ -88,23 +88,35 @@ function dragImage(e) {
         }
     }
 }
+// 假設有一個名為captureScreenshot的按鈕，並且video-container是包含要截圖的視頻的框架
+
+// 按下按鈕時的事件處理函式
 function captureScreenshot() {
-    // 取得 video-container 元素
+    // 找到video-container框架
     var videoContainer = document.getElementById('video-container');
 
-    // 建立一個畫布元素，將 video-container 內容繪製到畫布上
+    // 創建一個<canvas>元素，用於在其中繪製視頻幀
     var canvas = document.createElement('canvas');
+    canvas.width = videoContainer.clientWidth;
+    canvas.height = videoContainer.clientHeight;
     var ctx = canvas.getContext('2d');
-    canvas.width = videoContainer.offsetWidth;
-    canvas.height = videoContainer.offsetHeight;
+
+    // 將視頻框架內容繪製到<canvas>上
     ctx.drawImage(videoContainer, 0, 0, canvas.width, canvas.height);
 
-    // 將畫布轉換為圖片
+    // 將<canvas>轉換為圖片數據URL
     var dataURL = canvas.toDataURL('image/png');
 
-    // 建立一個<a>元素，將圖片下載為文件
+    // 創建一個<a>元素來下載圖片
     var link = document.createElement('a');
-    link.download = 'usie.png';
     link.href = dataURL;
+    link.download = 'screenshot.png';
+
+    // 將<a>元素添加到文檔中並點擊它以觸發下載
+    document.body.appendChild(link);
     link.click();
+
+    // 清理創建的元素
+    document.body.removeChild(link);
+    document.body.removeChild(canvas);
 }
