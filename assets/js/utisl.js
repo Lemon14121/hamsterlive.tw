@@ -88,24 +88,22 @@ function dragImage(e) {
         }
     }
 }
-// 假設有一個名為captureScreenshot的按鈕，並且video-container是包含要截圖的視頻的框架
-
 function captureScreenshot() {
-            var videoContainer = document.getElementById('video-container');
-            var video = document.getElementById('video-preview');
-            var overlay = document.getElementById('image-overlay');
+    var videoContainer = document.getElementById('video-container');
+    var video = document.getElementById('video-preview');
+    var overlay = document.getElementById('image-overlay');
 
-            var canvas = document.createElement('canvas');
-            canvas.width = videoContainer.offsetWidth;
-            canvas.height = videoContainer.offsetHeight;
-            var ctx = canvas.getContext('2d');
+    var canvas = document.createElement('canvas');
+    canvas.width = videoContainer.offsetWidth;
+    canvas.height = videoContainer.offsetHeight;
+    var ctx = canvas.getContext('2d');
 
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            ctx.globalAlpha = 0.5; // Adjust this value to control overlay opacity
-            ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 0.5; // Adjust this value to control overlay opacity
+    ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-            var link = document.createElement('a');
-            link.download = 'screenshot.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }
+    var link = document.createElement('a');
+    link.download = 'screenshot.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
