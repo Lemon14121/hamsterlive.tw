@@ -99,11 +99,11 @@ function captureScreenshot() {
     var ctx = canvas.getContext('2d');
 
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1; // Adjust this value to control overlay opacity
+    ctx.globalAlpha = 0.1; // Adjust this value to control overlay opacity
     ctx.drawImage(overlay, lastX, lastY, canvas.width, canvas.height);
 
     var link = document.createElement('a');
-    link.download = 'screenshot.png';
+    link.download = 'usie.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
 }
