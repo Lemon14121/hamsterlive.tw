@@ -89,21 +89,21 @@ function dragImage(e) {
     }
 }
 function captureScreenshot() {
-    var videoContainer = document.getElementById('video-container');
-    var video = document.getElementById('video-preview');
-    var overlay = document.getElementById('image-overlay');
-
+    var container = document.getElementById('video-container');
+    
     var canvas = document.createElement('canvas');
-    canvas.width = videoContainer.offsetWidth;
-    canvas.height = videoContainer.offsetHeight;
     var ctx = canvas.getContext('2d');
-
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 0.1; // Adjust this value to control overlay opacity
-    ctx.drawImage(overlay, lastX, lastY, canvas.width, canvas.height);
-
+    
+    // 設定canvas的尺寸和原元素一樣
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+    
+    // 將截圖貼在canvas上
+    ctx.drawImage(container, 0, 0, canvas.width, canvas.height);
+    
+    // 將canvas轉換為圖瑱並下載
     var link = document.createElement('a');
-    link.download = 'usie.png';
-    link.href = canvas.toDataURL('image/png');
+    link.download = 'screenshot.png';
+    link.href = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
     link.click();
 }
