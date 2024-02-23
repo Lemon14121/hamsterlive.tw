@@ -114,7 +114,7 @@ function captureScreenshot() {
 
     // 计算 overlay 在 canvas 中的位置和大小，并向上偏移 20px
     var overlayX = overlayRect.left - videoRect.left;
-    var overlayY = overlayRect.top - videoRect.top - 20;
+    var overlayY = overlayRect.top - videoRect.top;
     var overlayWidth = overlayRect.width;
     var overlayHeight = overlayRect.height;
 
