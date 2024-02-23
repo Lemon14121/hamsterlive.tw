@@ -108,12 +108,21 @@ function captureScreenshot() {
     // 恢复变换矩阵
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
+    // 获取 overlay 在视频容器中的位置
+    var overlayRect = overlay.getBoundingClientRect();
+    var videoRect = videoContainer.getBoundingClientRect();
+
+    // 计算 overlay 在 canvas 中的位置和大小，并向上偏移 20px
+    var overlayX = overlayRect.left - videoRect.left;
+    var overlayY = overlayRect.top - videoRect.top - 20;
+    var overlayWidth = overlayRect.width;
+    var overlayHeight = overlayRect.height;
+
     // 绘制 overlay
-    ctx.drawImage(overlay, parseFloat(getComputedStyle(imageOverlay).left), parseFloat(getComputedStyle(imageOverlay).top), parseFloat(getComputedStyle(imageOverlay).width), parseFloat(getComputedStyle(imageOverlay).height));
+    ctx.drawImage(overlay, overlayX, overlayY, overlayWidth, overlayHeight);
 
     var link = document.createElement('a');
     link.download = 'usie.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
 }
-
