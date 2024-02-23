@@ -42,11 +42,18 @@
         </ul>
     </nav>
     <article>
+        <div class="col-12 col-12-large col-12-small" style="background-color: rgb(247, 234, 208);">
+            <h6>使用教學 : </h6>
+            <h6>1.先授權鏡頭權限才能讀取到鏡頭的畫面</h6>
+            <h6>2.等待顯示出鏡頭畫面後點選想合照的成員</h6>
+            <h6>3.調整合拍成員的大小和位置</h6>
+            <h6>4.在美好的瞬間按下「下載合照」，就會直接下載到你的裝置了喔</h6>
+            <h6>特別注意 : 不支援連續大量拍照，如有需求請自行截圖</h6>
+        </div>
         <div id="video-container">
             <video id="video-preview" autoplay></video>
-            <image id="image-overlay" src="images/Lemon_2.png" alt="Overlay Image">
+            <image id="image-overlay" src="images/Lemon_2.png" alt="AR">
         </div>
-
         <div class="row">
             <div class="col-12 col-12-large col-12-small"style="display: flex;">
                 <div class="circle-button" style="background-image: url('images/Lemon_2.png');" onclick="changeImage('images/Lemon_2.png')"></div>
@@ -59,10 +66,9 @@
                 <div class="circle-button" style="background-image: url('images/Hokuto_2.png');" onclick="changeImage('images/Hokuto_2.png')"></div>
                 <div class="circle-button" style="background-image: url('images/Tidy-Lusaka_2.png');" onclick="changeImage('images/Tidy-Lusaka_2.png')"></div>
             </div>
-            <div class="col-10 col-10-large col-10-small">
+            <div class="col-12 col-12-large col-12-small">
                 <button onclick="captureScreenshot()">下載合照</button>
                 <!--<button onclick="image()">更换自己想合照的照片</button>-->
-                <h6>必須先授權鏡頭權限才能讀取到鏡頭的畫面，等待顯示出鏡頭畫面後再開始合照。(不支援連續大量拍照，如有需求請自行截圖)</h6>
             </div>
         </div>
     </article>
@@ -74,9 +80,7 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/utisl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js"></script>
-
     <script>
         window.addEventListener('load', () => {
             quicklink.listen();
