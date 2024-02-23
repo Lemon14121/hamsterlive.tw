@@ -88,7 +88,7 @@ function dragImage(e) {
         }
     }
 }
-function captureScreenshot() {
+function captureScreenshot() { 
     var videoContainer = document.getElementById('video-container');
     var video = document.getElementById('video-preview');
     var overlay = document.getElementById('image-overlay');
@@ -98,17 +98,18 @@ function captureScreenshot() {
     canvas.height = videoContainer.offsetHeight;
     var ctx = canvas.getContext('2d');
 
-    // 先水平翻转视频画面
+    // 水平翻转视频画面
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
 
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // 绘制视频画面
+    ctx.drawImage(video, 0, 0, videoContainer.offsetWidth, videoContainer.offsetHeight);
 
     // 恢复变换矩阵
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
     // 绘制 overlay
-    ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(overlay, parseFloat(getComputedStyle(imageOverlay).left), parseFloat(getComputedStyle(imageOverlay).top), parseFloat(getComputedStyle(imageOverlay).width), parseFloat(getComputedStyle(imageOverlay).height));
 
     var link = document.createElement('a');
     link.download = 'usie.png';
