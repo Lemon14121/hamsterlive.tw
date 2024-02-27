@@ -33,12 +33,12 @@ function image() {
         imageOverlay.src = newImage;
     }
 }
-// 電腦版拖曳
+// 電腦版移動
 imageOverlay.addEventListener('mousedown', startDragging);
 imageOverlay.addEventListener('mouseup', stopDragging);
 imageOverlay.addEventListener('mousemove', dragImage);
 
-// 移動版拖曳
+// 攜帶裝置移動
 imageOverlay.addEventListener('touchstart', startDragging);
 imageOverlay.addEventListener('touchend', stopDragging);
 imageOverlay.addEventListener('touchmove', dragImage);
@@ -90,36 +90,35 @@ function dragImage(e) {
 }
 
 function captureScreenshot() { 
-    var videoContainer = document.getElementById('video-container');
     var video = document.getElementById('video-preview');
     var overlay = document.getElementById('image-overlay');
 
     var canvas = document.createElement('canvas');
-    canvas.width = videoContainer.offsetWidth;
-    canvas.height = videoContainer.offsetHeight;
+    canvas.width = video.offsetWidth;
+    canvas.height = video.offsetHeight;
     var ctx = canvas.getContext('2d');
 
-    // 水平翻转视频画面
+    // 水平翻轉鏡頭畫面
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
 
-    // 绘制视频画面
-    ctx.drawImage(video, 0, 0, videoContainer.offsetWidth, videoContainer.offsetHeight);
+    // 貼上鏡頭畫面
+    ctx.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
 
-    // 恢复变换矩阵
+    // 恢復變換矩陣
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // 获取 overlay 在视频容器中的位置
+    // 取得overlay 在鏡頭畫面中的位置
     var overlayRect = overlay.getBoundingClientRect();
-    var videoRect = videoContainer.getBoundingClientRect();
+    var videoRect = video.getBoundingClientRect();
 
-    // 计算 overlay 在 canvas 中的位置和大小，并向上偏移 20px
+    // 計算 overlay 在 canvas 中的位置和大小
     var overlayX = overlayRect.left - videoRect.left;
     var overlayY = overlayRect.top - videoRect.top;
     var overlayWidth = overlayRect.width;
     var overlayHeight = overlayRect.height;
 
-    // 绘制 overlay
+    // 繪製 overlay
     ctx.drawImage(overlay, overlayX, overlayY, overlayWidth, overlayHeight);
 
     var link = document.createElement('a');
