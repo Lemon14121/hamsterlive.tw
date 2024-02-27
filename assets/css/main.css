@@ -2828,9 +2828,7 @@ button {
 #image-overlay {
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); /* 圖片置中 */
-	width: 50%;
+	width: 30%;
 	cursor: move; /* 可拖動 */
 	user-select: none; /* 防止文字被選擇 */
 	z-index: 2;
@@ -2848,15 +2846,4 @@ button {
 	padding: 5px 10px;
 	background-color: #ccc;
 	cursor: pointer;
-}
-
-.circle-btn {
-	position: relative;
-	width: 100%;
-	aspect-ratio: 1/1;
-	border-radius: 50%;
-	cursor: pointer;
-	margin-bottom: 20px;
-	background-position: top center;
-	background-size: 90%;
 }
