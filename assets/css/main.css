@@ -2828,7 +2828,7 @@ button {
 #image-overlay {
 	position: absolute;
 	top: 50%;
-	width: 30%;
+	width: 40%;
 	cursor: move; /* 可拖動 */
 	user-select: none; /* 防止文字被選擇 */
 	z-index: 2;
