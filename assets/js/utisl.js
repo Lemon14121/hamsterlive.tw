@@ -33,12 +33,12 @@ function image() {
         imageOverlay.src = newImage;
     }
 }
-// 電腦版移動
+// 電腦版拖曳
 imageOverlay.addEventListener('mousedown', startDragging);
 imageOverlay.addEventListener('mouseup', stopDragging);
 imageOverlay.addEventListener('mousemove', dragImage);
 
-// 攜帶裝置移動
+// 移動版拖曳
 imageOverlay.addEventListener('touchstart', startDragging);
 imageOverlay.addEventListener('touchend', stopDragging);
 imageOverlay.addEventListener('touchmove', dragImage);
