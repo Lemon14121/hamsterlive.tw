@@ -65,6 +65,7 @@ function dragImage(e) {
     if (isDragging) {
         e.preventDefault();
         if (e.touches && e.touches.length === 1) {
+            // 处理单个触摸点拖动图像
             const touch = e.touches[0];
             const deltaX = touch.clientX - lastX;
             const deltaY = touch.clientY - lastY;
@@ -73,12 +74,14 @@ function dragImage(e) {
             lastX = touch.clientX;
             lastY = touch.clientY;
         } else if (e.touches && e.touches.length === 2) {
+            // 处理两个触摸点缩放图像
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
             const scale = distance / initialDistance * initialScale;
             imageOverlay.style.transform = `scale(${scale})`;
         } else {
+            // 其他情况，例如鼠标拖动
             const deltaX = e.clientX - lastX;
             const deltaY = e.clientY - lastY;
             imageOverlay.style.left = parseFloat(getComputedStyle(imageOverlay).left) + deltaX + 'px';
@@ -88,6 +91,7 @@ function dragImage(e) {
         }
     }
 }
+
 
 function captureScreenshot() { 
     var video = document.getElementById('video-preview');
