@@ -2828,9 +2828,7 @@ button {
 #image-overlay {
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); /* 圖片置中 */
-	width: 50%;
+	width: 40%;
 	cursor: move; /* 可拖動 */
 	user-select: none; /* 防止文字被選擇 */
 	z-index: 2;
@@ -2848,4 +2846,60 @@ button {
 	padding: 5px 10px;
 	background-color: #ccc;
 	cursor: pointer;
+}
+
+
+/* article元素样式 */
+#portfolio {
+    display: flex;
+    flex-wrap: wrap; /* 当内容换行时自动添加新行 */
+    justify-content: space-around;
+    align-items: flex-start; /* 垂直方向上靠顶部对齐 */
+    padding: 20px;
+}
+
+/* 每个按钮所在的列样式 */
+.btn-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* 按钮之间的垂直间距 */
+    flex-grow: 1; /* 自动填充父容器剩余空间 */
+}
+
+/* 给每个按钮都添加样式 */
+.btn {
+    padding: 10px 20px;
+    border: 2px solid #ffffff; /* 初始外框 */
+    background-color: #ffffff; /* 初始背景色 */
+    color: #85831e; /* 文字颜色 */
+    cursor: pointer;
+    margin-bottom: 5px; /* 按钮之间的垂直间距 */
+    flex-grow: 1; /* 自动填充父容器剩余空间 */
+	
+}
+/* 悬停时改变背景色 */
+.btn:hover {
+	transition: background-color 0.5s ease; /* 过渡效果 */
+    background-color: #ddd; /* 悬停时的背景色 */
+}
+/* 给被选中的按钮添加绿色背景 */
+.btn.btn-outline-success.active, 
+.btn.btn-outline-success:active {
+    background-color: #85831e; /* 背景 */
+    color: #fff; /* 文字颜色 */
+}
+
+/* 确保只有一个按钮被选中时才应用激活样式 */
+.btn-check:checked + .btn.btn-outline-success {
+    background-color: #85831e; /* 背景 */
+    color: #fff; /* 文字颜色 */
+}
+
+/* 矩形外框白色背景 */
+article {
+    border: 2px solid #fff;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
 }
