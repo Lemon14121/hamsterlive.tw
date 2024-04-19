@@ -547,6 +547,7 @@ document.getElementById("nextBtn").addEventListener("click", function(){
 });
 
 
+
 function show00(){
 	document.getElementById("div98").style.display="none";
 	document.getElementById("div00").style.display="block";
@@ -602,4 +603,19 @@ function changeImage(imagePath,button) {
 function downlist() {
 	var verticalList = document.querySelector('#nav ul.vertical');
 	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
+}
+
+window.addEventListener('scroll', fadeInOnScroll);
+
+  function fadeInOnScroll() {
+    var elements = document.querySelectorAll('.fain');
+    var windowHeight = window.innerHeight;
+
+    elements.forEach(function(element) {
+        var distanceFromTop = element.getBoundingClientRect().top;
+        if (distanceFromTop - windowHeight <= 0) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)'; // 向上浮动结束，回到原始位置
+        }
+    });
 }
