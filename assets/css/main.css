@@ -2858,53 +2858,51 @@ button {
 }
 
 
+/* article元素樣式 */
 #portfolio {
     display: flex;
-    flex-wrap: wrap; /* 當內容換行時自動添加新一行 */
+    flex-wrap: wrap; /* 當內容換行時自動添加新行 */
     justify-content: space-around;
     align-items: flex-start; /* 垂直至頂對旗 */
     padding: 20px;
 }
 
+/* 每個按鈕所在的列樣式 */
 .btn-column {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px; /* 垂直間距 */
-    flex-grow: 1; /* 自動填充剩餘空間 */
 }
 
+/* 給每個按鈕都添加樣式 */
 .btn {
-    padding: 10px 20px;
-    border: 2px solid #ffffff; /* 初始外框 */
+    padding: 10px 30px;
+    border: 3pt solid #85831e; /* 初始外框 */
     background-color: #ffffff; /* 初始背景色 */
     color: #85831e; /* 文字顏色 */
     cursor: pointer;
     margin-bottom: 10px; /* 垂直間距 */
     flex-grow: 1; /* 自動填充剩餘空間 */
-	
+	margin: 5px 10px;
 }
-/* 悬停时改变背景色 */
+
+/* 懸浮時改變顏色 */
 .btn:hover {
-	transition: background-color 0.5s ease; /* 轉化效果 */
+    transition: background-color 0.5s ease; /* 轉化效果 */
     background-color: #85831e; /* 懸浮時背景顏色效果 */
 }
-/* 被點選後的效果 */
+
+/* 被點擊後的效果 */
 .btn.btn-outline-success.active, 
 .btn.btn-outline-success:active {
     background-color: #85831e; /* 背景 */
     color: #fff; /* 文字顏色 */
 }
 
-/* 確認只有一個被選種判定式 */
+/* 確保只有一個被選中時的樣式 */
 .btn-check:checked + .btn.btn-outline-success {
     background-color: #85831e; /* 背景 */
     color: #fff; /* 文字顏色 */
 }
 
-article {
-    border: 2px solid #fff;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-}
