@@ -2672,7 +2672,7 @@ button {
 	text-align: center;
 	outline: 4px solid transparent;
 	overflow: hidden;
-	transition: .5s;
+	transition: .3s;
 }
 .vtubers h3 {
     grid-row: 2; /* 使 h3 和 span 位於單元格底部 */
@@ -2685,12 +2685,12 @@ button {
 }
 .product > :is(p,h2){
 	opacity: 0;
-	transition: .5s;
+	transition: .3s;
 }
 .product_bg{
 	position: absolute;
 	object-fit: cover;
-	transition: .5s;
+	transition: .3s;
 }
 .product:hover{
 	outline-offset: -5px;
@@ -2906,3 +2906,8 @@ button {
     color: #fff; /* 文字顏色 */
 }
 
+.fain {
+	opacity: 0; /* 初始透明度为0 */
+	transition: opacity 1s ease, transform 1s ease; /* 使用过渡效果 */
+	transform: translateY(30px); /* 初始位置向上偏移20像素 */
+}
