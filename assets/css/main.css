@@ -111,7 +111,7 @@ input, select, textarea {
 		-ms-transition: color .2s ease-in-out;
 		transition: color .2s ease-in-out;
 		color: #43B3E0;
-		text-decoration: underline;
+		text-decoration: none;
 	}
 
 		a:hover {
@@ -2657,13 +2657,13 @@ button {
 
 .vtubers{
 	display: grid;
-	grid-template-columns: 350px 250px;
-	grid-template-rows: 150px 50px;
+	grid-template-columns: 180px 180px;
+	grid-template-rows: 180px 30px;
 }
 .product{
 	background-image: url('images/bg-masthead.png');
 	position: relative;
-	width: 200px;
+	width: 180px;
 	aspect-ratio: 1/1;
 	display: grid;
 	place-content: center;
@@ -2673,6 +2673,15 @@ button {
 	outline: 4px solid transparent;
 	overflow: hidden;
 	transition: .5s;
+}
+.vtubers h3 {
+    grid-row: 2; /* 使 h3 和 span 位於單元格底部 */
+	margin-top: 10px;
+	text-align: center;
+}
+.vtubers span{
+	grid-row: 3;
+	margin-top: 10px;
 }
 .product > :is(p,h2){
 	opacity: 0;
@@ -2849,54 +2858,50 @@ button {
 }
 
 
-/* article元素样式 */
 #portfolio {
     display: flex;
-    flex-wrap: wrap; /* 当内容换行时自动添加新行 */
+    flex-wrap: wrap; /* 當內容換行時自動添加新一行 */
     justify-content: space-around;
-    align-items: flex-start; /* 垂直方向上靠顶部对齐 */
+    align-items: flex-start; /* 垂直至頂對旗 */
     padding: 20px;
 }
 
-/* 每个按钮所在的列样式 */
 .btn-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px; /* 按钮之间的垂直间距 */
-    flex-grow: 1; /* 自动填充父容器剩余空间 */
+    margin-bottom: 50px; /* 垂直間距 */
+    flex-grow: 1; /* 自動填充剩餘空間 */
 }
 
-/* 给每个按钮都添加样式 */
 .btn {
     padding: 10px 20px;
     border: 2px solid #ffffff; /* 初始外框 */
     background-color: #ffffff; /* 初始背景色 */
-    color: #85831e; /* 文字颜色 */
+    color: #85831e; /* 文字顏色 */
     cursor: pointer;
-    margin-bottom: 5px; /* 按钮之间的垂直间距 */
-    flex-grow: 1; /* 自动填充父容器剩余空间 */
+    margin-bottom: 10px; /* 垂直間距 */
+    flex-grow: 1; /* 自動填充剩餘空間 */
 	
 }
 /* 悬停时改变背景色 */
 .btn:hover {
-	transition: background-color 0.5s ease; /* 过渡效果 */
-    background-color: #ddd; /* 悬停时的背景色 */
+	transition: background-color 0.5s ease; /* 轉化效果 */
+    background-color: #85831e; /* 懸浮時背景顏色效果 */
 }
-/* 给被选中的按钮添加绿色背景 */
+/* 被點選後的效果 */
 .btn.btn-outline-success.active, 
 .btn.btn-outline-success:active {
     background-color: #85831e; /* 背景 */
-    color: #fff; /* 文字颜色 */
+    color: #fff; /* 文字顏色 */
 }
 
-/* 确保只有一个按钮被选中时才应用激活样式 */
+/* 確認只有一個被選種判定式 */
 .btn-check:checked + .btn.btn-outline-success {
     background-color: #85831e; /* 背景 */
-    color: #fff; /* 文字颜色 */
+    color: #fff; /* 文字顏色 */
 }
 
-/* 矩形外框白色背景 */
 article {
     border: 2px solid #fff;
     background-color: #fff;
