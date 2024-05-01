@@ -2909,5 +2909,5 @@ button {
 .fain {
 	opacity: 0; /* 初始透明度为0 */
 	transition: opacity 1s ease, transform 1s ease; /* 使用过渡效果 */
-	transform: translateY(30px); /* 初始位置向上偏移20像素 */
+	transform: translateY(50px); /* 初始位置向上偏移20像素 */
 }
