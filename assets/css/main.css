@@ -1707,7 +1707,6 @@ input, select, textarea {
 		button:active,
 		.button:active {
 			background-color: #3BA8D3;
-			top: 1px;
 		}
 
 		input[type="button"].large,
@@ -1819,11 +1818,7 @@ input, select, textarea {
 					width: 48px;
 				}
 
-				ul.social li a.fa-twitter {
-					background-color: #2DAAE4;
-				}
-
-				ul.social li a.fa-twitter-x {
+				ul.social li a.fa-x {
 					background-color: #2DAAE4;
 				}
 
@@ -2743,7 +2738,6 @@ button {
 	color: rgb(255, 255, 255);
 	border: none;
 	cursor: pointer;
-	opacity: 0.8;
 	border-radius: 50%;
 	width: 30px;
 	height: 30px;
@@ -2751,9 +2745,6 @@ button {
 	align-items: center;
 	justify-content: center;
 	z-index: 1; 
-}
-.bttn:hover {
-	opacity: 1;
 }
 #prevBtn {
 	left: 0;
@@ -2909,5 +2900,5 @@ button {
 .fain {
 	opacity: 0; /* 初始透明度为0 */
 	transition: opacity 1s ease, transform 1s ease; /* 使用过渡效果 */
-	transform: translateY(50px); /* 初始位置向上偏移20像素 */
+	transform: translateY(50px); /* 初始位置向上偏移30像素 */
 }
