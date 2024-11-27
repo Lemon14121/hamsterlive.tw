@@ -7,13 +7,15 @@ let initialScale;
 // 擷取前鏡頭畫面
 navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
+        // 前鏡頭畫面套入影片播放
         videoPreview.srcObject = stream;
+        // 建立一個新容器打包顯示畫面
         const container = document.createElement('div');
         container.style.transform = 'scaleX(-1)';
-        container.style.display = 'inline-block'; 
-        
+        container.style.display = 'inline-block'; // 確保新容器可以正確顯示
+        // 將顯示畫面匯入新容器中
         container.appendChild(videoPreview);
-       
+        // 將新容器加入原來的容器內
         const videoContainer = document.getElementById('video-container');
         videoContainer.appendChild(container);
     })
@@ -21,16 +23,22 @@ navigator.mediaDevices.getUserMedia({ video: true })
         console.log('無法讀取鏡頭：', error);
     });
     
-
+// 更换成員
 function changeImage(imagePath,button) {
     document.getElementById('image-overlay').src = imagePath;
 }
-
+function image() {
+    const newImage = prompt('請自行输入想合照的完整網址：');
+    if (newImage) {
+        imageOverlay.src = newImage;
+    }
+}
+// 電腦版移動
 imageOverlay.addEventListener('mousedown', startDragging);
 imageOverlay.addEventListener('mouseup', stopDragging);
 imageOverlay.addEventListener('mousemove', dragImage);
 
-
+// 攜帶裝置移動
 imageOverlay.addEventListener('touchstart', startDragging);
 imageOverlay.addEventListener('touchend', stopDragging);
 imageOverlay.addEventListener('touchmove', dragImage);
@@ -90,27 +98,27 @@ function captureScreenshot() {
     canvas.height = video.offsetHeight;
     var ctx = canvas.getContext('2d');
 
-    
+    // 水平翻轉鏡頭畫面
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
 
-    
+    // 貼上鏡頭畫面
     ctx.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
 
-    
+    // 恢復變換矩陣
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    
+    // 取得overlay 在鏡頭畫面中的位置
     var overlayRect = overlay.getBoundingClientRect();
     var videoRect = video.getBoundingClientRect();
 
-    
+    // 計算 overlay 在 canvas 中的位置和大小
     var overlayX = overlayRect.left - videoRect.left;
     var overlayY = overlayRect.top - videoRect.top;
     var overlayWidth = overlayRect.width;
     var overlayHeight = overlayRect.height;
 
-    /
+    // 繪製 overlay
     ctx.drawImage(overlay, overlayX, overlayY, overlayWidth, overlayHeight);
 
     var link = document.createElement('a');
