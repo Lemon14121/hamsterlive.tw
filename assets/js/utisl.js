@@ -2,46 +2,47 @@ const videoPreview = document.getElementById('video-preview');
 const imageOverlay = document.getElementById('image-overlay');
 let lastX, lastY;
 let isDragging = false;
-let initialDistance;
-let initialScale;
+let initialDistance = 0;
+let currentScale = 1;
+let translateX = 0;
+let translateY = 0;
+
+// 初始化圖片樣式
+imageOverlay.style.position = 'absolute';
+imageOverlay.style.transform = 'translate(0px, 0px) scale(1)';
+
 // 擷取前鏡頭畫面
 navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
-        // 前鏡頭畫面套入影片播放
         videoPreview.srcObject = stream;
-        // 建立一個新容器打包顯示畫面
         const container = document.createElement('div');
         container.style.transform = 'scaleX(-1)';
-        container.style.display = 'inline-block'; // 確保新容器可以正確顯示
-        // 將顯示畫面匯入新容器中
+        container.style.display = 'inline-block';
         container.appendChild(videoPreview);
-        // 將新容器加入原來的容器內
         const videoContainer = document.getElementById('video-container');
         videoContainer.appendChild(container);
     })
     .catch(error => {
         console.log('無法讀取鏡頭：', error);
     });
-    
-// 更换成員
-function changeImage(imagePath,button) {
-    document.getElementById('image-overlay').src = imagePath;
+
+// 更換成員
+function changeImage(imagePath, button) {
+    imageOverlay.src = imagePath;
 }
+
 function image() {
     const newImage = prompt('請自行输入想合照的完整網址：');
     if (newImage) {
         imageOverlay.src = newImage;
     }
 }
-// 電腦版移動
-imageOverlay.addEventListener('mousedown', startDragging);
-imageOverlay.addEventListener('mouseup', stopDragging);
-imageOverlay.addEventListener('mousemove', dragImage);
 
-// 攜帶裝置移動
-imageOverlay.addEventListener('touchstart', startDragging);
-imageOverlay.addEventListener('touchend', stopDragging);
-imageOverlay.addEventListener('touchmove', dragImage);
+// 拖曳與縮放功能
+function applyTransform() {
+    imageOverlay.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+}
+
 function startDragging(e) {
     isDragging = true;
     if (e.touches && e.touches.length === 1) {
@@ -52,15 +53,16 @@ function startDragging(e) {
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
         initialDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-        initialScale = parseFloat(getComputedStyle(imageOverlay).transform.split(',')[3].trim());
     } else {
         lastX = e.clientX;
         lastY = e.clientY;
     }
 }
+
 function stopDragging() {
     isDragging = false;
 }
+
 function dragImage(e) {
     if (isDragging) {
         e.preventDefault();
@@ -68,60 +70,63 @@ function dragImage(e) {
             const touch = e.touches[0];
             const deltaX = touch.clientX - lastX;
             const deltaY = touch.clientY - lastY;
-            imageOverlay.style.left = parseFloat(getComputedStyle(imageOverlay).left) + deltaX + 'px';
-            imageOverlay.style.top = parseFloat(getComputedStyle(imageOverlay).top) + deltaY + 'px';
+            translateX += deltaX;
+            translateY += deltaY;
             lastX = touch.clientX;
             lastY = touch.clientY;
+            applyTransform();
         } else if (e.touches && e.touches.length === 2) {
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            const scale = distance / initialDistance * initialScale;
-            imageOverlay.style.transform = `scale(${scale})`;
+            currentScale *= distance / initialDistance;
+            initialDistance = distance;
+            applyTransform();
         } else {
             const deltaX = e.clientX - lastX;
             const deltaY = e.clientY - lastY;
-            imageOverlay.style.left = parseFloat(getComputedStyle(imageOverlay).left) + deltaX + 'px';
-            imageOverlay.style.top = parseFloat(getComputedStyle(imageOverlay).top) + deltaY + 'px';
+            translateX += deltaX;
+            translateY += deltaY;
             lastX = e.clientX;
             lastY = e.clientY;
+            applyTransform();
         }
     }
 }
 
-function captureScreenshot() { 
-    var video = document.getElementById('video-preview');
-    var overlay = document.getElementById('image-overlay');
+// 綁定事件
+imageOverlay.addEventListener('mousedown', startDragging);
+imageOverlay.addEventListener('mouseup', stopDragging);
+imageOverlay.addEventListener('mousemove', dragImage);
 
-    var canvas = document.createElement('canvas');
+imageOverlay.addEventListener('touchstart', startDragging);
+imageOverlay.addEventListener('touchend', stopDragging);
+imageOverlay.addEventListener('touchmove', dragImage);
+
+// 截圖功能
+function captureScreenshot() {
+    const video = document.getElementById('video-preview');
+    const canvas = document.createElement('canvas');
     canvas.width = video.offsetWidth;
     canvas.height = video.offsetHeight;
-    var ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
-    // 水平翻轉鏡頭畫面
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
-
-    // 貼上鏡頭畫面
     ctx.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight);
 
-    // 恢復變換矩陣
+    const overlayRect = imageOverlay.getBoundingClientRect();
+    const videoRect = video.getBoundingClientRect();
+
+    const overlayX = overlayRect.left - videoRect.left;
+    const overlayY = overlayRect.top - videoRect.top;
+    const overlayWidth = overlayRect.width;
+    const overlayHeight = overlayRect.height;
+
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(imageOverlay, overlayX, overlayY, overlayWidth, overlayHeight);
 
-    // 取得overlay 在鏡頭畫面中的位置
-    var overlayRect = overlay.getBoundingClientRect();
-    var videoRect = video.getBoundingClientRect();
-
-    // 計算 overlay 在 canvas 中的位置和大小
-    var overlayX = overlayRect.left - videoRect.left;
-    var overlayY = overlayRect.top - videoRect.top;
-    var overlayWidth = overlayRect.width;
-    var overlayHeight = overlayRect.height;
-
-    // 繪製 overlay
-    ctx.drawImage(overlay, overlayX, overlayY, overlayWidth, overlayHeight);
-
-    var link = document.createElement('a');
+    const link = document.createElement('a');
     link.download = 'usie.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
