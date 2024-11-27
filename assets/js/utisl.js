@@ -49,10 +49,6 @@ function startDragging(e) {
         const touch = e.touches[0];
         lastX = touch.clientX;
         lastY = touch.clientY;
-    } else if (e.touches && e.touches.length === 2) {
-        const touch1 = e.touches[0];
-        const touch2 = e.touches[1];
-        initialDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
     } else {
         lastX = e.clientX;
         lastY = e.clientY;
@@ -75,13 +71,6 @@ function dragImage(e) {
             lastX = touch.clientX;
             lastY = touch.clientY;
             applyTransform();
-        } else if (e.touches && e.touches.length === 2) {
-            const touch1 = e.touches[0];
-            const touch2 = e.touches[1];
-            const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            currentScale *= distance / initialDistance;
-            initialDistance = distance;
-            applyTransform();
         } else {
             const deltaX = e.clientX - lastX;
             const deltaY = e.clientY - lastY;
@@ -94,7 +83,21 @@ function dragImage(e) {
     }
 }
 
-// 綁定事件
+// 滾輪縮放功能（適用於電腦）
+imageOverlay.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const scaleStep = 0.1; // 每次滾輪縮放的比例
+    if (e.deltaY < 0) {
+        // 放大
+        currentScale += scaleStep;
+    } else {
+        // 縮小
+        currentScale = Math.max(0.1, currentScale - scaleStep); // 確保縮放比例不低於 0.1
+    }
+    applyTransform();
+});
+
+// 綁定拖曳事件
 imageOverlay.addEventListener('mousedown', startDragging);
 imageOverlay.addEventListener('mouseup', stopDragging);
 imageOverlay.addEventListener('mousemove', dragImage);
