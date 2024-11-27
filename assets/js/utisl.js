@@ -49,6 +49,14 @@ function startDragging(e) {
         const touch = e.touches[0];
         lastX = touch.clientX;
         lastY = touch.clientY;
+    } else if (e.touches && e.touches.length === 2) {
+        // 雙指縮放初始化
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        initialDistance = Math.hypot(
+            touch1.clientX - touch2.clientX,
+            touch1.clientY - touch2.clientY
+        );
     } else {
         lastX = e.clientX;
         lastY = e.clientY;
@@ -63,6 +71,7 @@ function dragImage(e) {
     if (isDragging) {
         e.preventDefault();
         if (e.touches && e.touches.length === 1) {
+            // 單指拖曳
             const touch = e.touches[0];
             const deltaX = touch.clientX - lastX;
             const deltaY = touch.clientY - lastY;
@@ -71,7 +80,20 @@ function dragImage(e) {
             lastX = touch.clientX;
             lastY = touch.clientY;
             applyTransform();
+        } else if (e.touches && e.touches.length === 2) {
+            // 雙指縮放
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            const distance = Math.hypot(
+                touch1.clientX - touch2.clientX,
+                touch1.clientY - touch2.clientY
+            );
+            const scaleChange = distance / initialDistance;
+            currentScale *= scaleChange;
+            initialDistance = distance;
+            applyTransform();
         } else {
+            // 滑鼠拖曳
             const deltaX = e.clientX - lastX;
             const deltaY = e.clientY - lastY;
             translateX += deltaX;
@@ -97,7 +119,7 @@ imageOverlay.addEventListener('wheel', (e) => {
     applyTransform();
 });
 
-// 綁定拖曳事件
+// 綁定拖曳與縮放事件
 imageOverlay.addEventListener('mousedown', startDragging);
 imageOverlay.addEventListener('mouseup', stopDragging);
 imageOverlay.addEventListener('mousemove', dragImage);
