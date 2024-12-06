@@ -597,9 +597,14 @@ function show99(){
 	document.getElementById("div99").style.display="block";
 }
 
-function changeImage(imagePath,button) {
-	document.getElementById('image-display').src = imagePath;
+function changeImage(imagePath, groupId) {
+	const group = document.getElementById(groupId);
+	const imageDisplay = group.querySelector('#image-display');
+	if (imageDisplay) {
+	  imageDisplay.src = imagePath;
+	}
 }
+  
 function downlist() {
 	var verticalList = document.querySelector('#nav ul.vertical');
 	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
