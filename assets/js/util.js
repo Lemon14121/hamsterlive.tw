@@ -620,7 +620,15 @@ window.addEventListener('scroll', fadeInOnScroll);
         var distanceFromTop = element.getBoundingClientRect().top;
         if (distanceFromTop - windowHeight <= 0) {
             element.style.opacity = '1';
-            element.style.transform = 'translateY(0)'; // 向上浮动结束，回到原始位置
+            element.style.transform = 'translateY(0)'; 
         }
     });
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+        event.preventDefault();
+    }
+});
