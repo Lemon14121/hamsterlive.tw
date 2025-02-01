@@ -1505,6 +1505,7 @@ input, select, textarea {
 
 		}
 
+
 /* Form */
 
 	form label {
@@ -2040,94 +2041,7 @@ input, select, textarea {
 					background: #252525;
 				}
 
-				/* Nav */
-#nav {
-    background-color: #282828;
-    text-align: right;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 10000;
-    cursor: default;
-    height: 3.5em;
-    line-height: 3.5em;
-}
 
-#nav ul {
-    margin-bottom: 0;
-    list-style: none;
-    padding-left: 0;
-}
-
-#nav li {
-    display: inline-block;
-    padding-left: 0;
-}
-
-#nav li.left {
-    float: left;
-}
-
-#nav a {
-    -moz-transition: background-color .2s ease-in-out;
-    -webkit-transition: background-color .2s ease-in-out;
-    -ms-transition: background-color .2s ease-in-out;
-    transition: background-color .2s ease-in-out;
-    position: relative;
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    outline: 0;
-    font-weight: 600;
-    border-radius: 8px;
-    color: #fff;
-    height: 2.5em;
-    line-height: 2.5em;
-    padding: 0 1.25em;
-}
-
-#nav a img {
-    height: 100%;
-    width: auto;
-    vertical-align: middle;
-}
-
-#nav a:hover {
-    color: #fff !important;
-    background: #383838;
-}
-
-#nav a.active {
-    background: #484848;
-}
-
-#nav a.active:before {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -0.6em;
-    left: 50%;
-    margin-left: -0.75em;
-    border-left: solid 0.75em transparent;
-    border-right: solid 0.75em transparent;
-    border-top: solid 0.6em #282828;
-}
-
-#nav ul.vertical {
-    text-align: left;
-    display: none; /* Hide the vertical list by default */
-    background: #282828; /* Set the background color for the dropdown menu */
-    position: absolute;
-    top: 3.5em; /* Adjust the top position to align with the main navigation bar */
-    right: 0;
-    width: 50%; /* Set the width to 50% of the parent container */
-    transform: translateX(40%); /* Center the dropdown menu horizontally */
-}
-#nav ul.vertical li {
-    display: block;
-    padding: 0.5em 0;
-}
 
 /* Articles */
 
@@ -2213,6 +2127,7 @@ input, select, textarea {
 		/* Basic */
 
 			body {
+				padding-top: 3.5em;
 				font-size: 11pt;
 			}
 
@@ -2247,13 +2162,33 @@ input, select, textarea {
 					height: 24em;
 					margin: 0;
 				}
+		
+		/* Nav */
 
+		#nav {
+			height: 44px;
+			line-height: 44px;
+		}
+
+			#nav a {
+				padding: 0 0.75em;
+				height: inherit;
+				line-height: inherit;
+				border-radius: 0;
+			}
+
+				#nav a:hover {
+					background-color: transparent;
+				}
 	}
 
 /* Medium */
 
 	@media screen and (max-width: 980px) {
-
+		
+		body {
+				padding-top: 3.5em;
+			}
 		/* Articles */
 
 			#top {
@@ -2265,6 +2200,23 @@ input, select, textarea {
 					margin: 0 auto 2em auto;
 				}
 
+		/* Nav */
+
+		#nav {
+			height: 44px;
+			line-height: 44px;
+		}
+
+			#nav a {
+				padding: 0 0.75em;
+				height: inherit;
+				line-height: inherit;
+				border-radius: 0;
+			}
+
+				#nav a:hover {
+					background-color: transparent;
+				}
 	}
 
 /* Small */
@@ -2274,9 +2226,8 @@ input, select, textarea {
 		/* Basic */
 
 			body {
-				padding-top: 44px;
+				padding-top: 3.5em;
 			}
-
 			body, input, textarea, select {
 				line-height: 1.75em;
 				font-size: 10pt;
@@ -2348,7 +2299,7 @@ input, select, textarea {
 			}
 
 				ul.social li {
-					margin: 0.8em 0.8em 0.8em 0.8em;
+					margin: 0.5em 0.5em 0.5em 0.5em;
 				}
 
 					ul.social li a {
@@ -2417,8 +2368,12 @@ input, select, textarea {
 			}
 
 		/* Nav */
-
+			.navbar-toggler {
+				display: block;
+				width: auto; /* Set width to auto so it adjusts to text width */
+			}
 			#nav {
+				top:0;
 				height: 44px;
 				line-height: 44px;
 			}
@@ -2854,7 +2809,7 @@ button {
     display: flex;
     flex-wrap: wrap; /* 當內容換行時自動添加新行 */
     justify-content: space-around;
-    align-items: flex-start; /* 垂直至頂對旗 */
+    align-items: flex-start; /* 垂直至頂對齊 */
     padding: 20px;
 }
 
@@ -2891,14 +2846,31 @@ button {
     color: #fff; /* 文字顏色 */
 }
 
-/* 確保只有一個被選中時的樣式 */
 .btn-check:checked + .btn.btn-outline-success {
     background-color: #85831e; /* 背景 */
     color: #fff; /* 文字顏色 */
 }
 
 .fain {
-	opacity: 0; /* 初始透明度为0 */
-	transition: opacity 1s ease, transform 1s ease; /* 使用过渡效果 */
-	transform: translateY(50px); /* 初始位置向上偏移30像素 */
+	opacity: 0; 
+	transition: opacity 1s ease, transform 1s ease; 
+	transform: translateY(50px); 
+}
+
+.redtext h6 {
+	color: red;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 9999; /* 確保導航條位於最上層 */
+	height: 3.5em;
+  }
+
+  .navbar-collapse {
+	z-index: 1060; 
+	background-color: #202020;
 }
