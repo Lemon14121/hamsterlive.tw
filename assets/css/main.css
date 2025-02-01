@@ -1788,8 +1788,8 @@ input, select, textarea {
 				-ms-transition: top .2s ease-in-out;
 				transition: top .2s ease-in-out;
 				display: block;
-				width: 48px;
-				height: 48px;
+				width: 56px;
+				height: 56px;
 				border-radius: 6px;
 				top: 0;
 				position: relative;
@@ -1805,18 +1805,18 @@ input, select, textarea {
 					-ms-transition: background-color .2s ease-in-out;
 					transition: background-color .2s ease-in-out;
 					background-color: #fadf72;
-					border-radius: 6px;
+					border-radius: 6x;
 					box-shadow: inset 0px 0px 0px 1px #282828, inset 0px 2px 1px 0px rgba(255, 255, 255, 0.1);
 					color: #2E2E2E !important;
 					display: block;
-					font-size: 26px;
-					height: 48px;
-					line-height: 48px;
+					font-size: 30px;
+					height: 56px;
+					line-height: 56px;
 					text-align: center;
 					outline: 0;
 					overflow: hidden;
 					text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1);
-					width: 48px;
+					width: 56px;
 				}
 
 				ul.social li a.fa-x {
@@ -2631,7 +2631,7 @@ button {
 }
 .vtubers span{
 	grid-row: 3;
-	margin-top: 10px;
+	margin-top: 1px;
 }
 .product > :is(p,h2){
 	opacity: 0;
