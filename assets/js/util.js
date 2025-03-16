@@ -547,6 +547,14 @@ document.getElementById("nextBtn").addEventListener("click", function(){
 });
 
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+        event.preventDefault();
+    }
+});
+
 
 function show00(){
 	document.getElementById("div98").style.display="none";
@@ -625,10 +633,4 @@ window.addEventListener('scroll', fadeInOnScroll);
     });
 }
 
-document.addEventListener('contextmenu', event => event.preventDefault());
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-        event.preventDefault();
-    }
-});
