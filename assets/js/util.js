@@ -517,120 +517,128 @@
 		return $this;
 
 	};
-
 })
-	
-let slideIndex = 0;
-function showSlides() {
-    let slides = document.getElementsByClassName("slide");
-    let slider = document.getElementById("slider");
-    let slideWidth = slides[0].clientWidth; // 第一張圖片的寬度
-    let transformValue = -slideIndex * slideWidth;
-    slider.style.transform = "translateX(" + transformValue + "px)";
-}
-function plusSlides(n) {
-	slideIndex += n;
-	if (slideIndex >= 2) {
-		slideIndex = 0;
-	}
-	if (slideIndex < 0) {
-		slideIndex = 1;
-	}
-	showSlides();
-}				
-setInterval(function() { plusSlides(1); }, 3000);
-document.getElementById("prevBtn").addEventListener("click", function(){
-	plusSlides(-1);
-});
-document.getElementById("nextBtn").addEventListener("click", function(){
-	plusSlides(1);
-});
 
-
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+document.addEventListener("keydown", function(event) {
+    if (
+        event.key === "F12" || 
+        (event.ctrlKey && event.shiftKey && event.key === "I") || 
+        (event.ctrlKey && event.shiftKey && event.key === "J") || 
+        (event.ctrlKey && event.key === "U")
+    ) {
         event.preventDefault();
     }
 });
 
+document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+});
 
-function show00(){
-	document.getElementById("div98").style.display="none";
-	document.getElementById("div00").style.display="block";
-	document.getElementById("div0").style.display="none";
-	document.getElementById("div1").style.display="none";
-	document.getElementById("div10").style.display="none";
-	document.getElementById("div99").style.display="none";
-};
-function show0(){
-	document.getElementById("div98").style.display="none";
-	document.getElementById("div00").style.display="none";
-	document.getElementById("div0").style.display="block";
-	document.getElementById("div1").style.display="none";
-	document.getElementById("div10").style.display="none";
-	document.getElementById("div99").style.display="none";
-}
-function show1(){
-	document.getElementById("div98").style.display="none";
-	document.getElementById("div00").style.display="none";
-	document.getElementById("div0").style.display="none";
-	document.getElementById("div1").style.display="block";
-	document.getElementById("div10").style.display="none";
-	document.getElementById("div99").style.display="none";
-}
-function show10(){
-	document.getElementById("div98").style.display="none";
-	document.getElementById("div00").style.display="none";
-	document.getElementById("div0").style.display="none";
-	document.getElementById("div1").style.display="none";
-	document.getElementById("div10").style.display="block";
-	document.getElementById("div99").style.display="none";
-}
-function show98(){
-	document.getElementById("div98").style.display="block";
-	document.getElementById("div00").style.display="none";
-	document.getElementById("div0").style.display="none";
-	document.getElementById("div1").style.display="none";
-	document.getElementById("div10").style.display="none";
-	document.getElementById("div99").style.display="none";
-}
-function show99(){
-	document.getElementById("div98").style.display="none";
-	document.getElementById("div00").style.display="none";
-	document.getElementById("div0").style.display="none";
-	document.getElementById("div1").style.display="none";
-	document.getElementById("div10").style.display="none";
-	document.getElementById("div99").style.display="block";
-}
+	
+document.addEventListener("DOMContentLoaded", function() {
 
-function changeImage(imagePath, groupId) {
-	const group = document.getElementById(groupId);
-	const imageDisplay = group.querySelector('#image-display');
-	if (imageDisplay) {
-	  imageDisplay.src = imagePath;
-	}
-}
-  
-function downlist() {
-	var verticalList = document.querySelector('#nav ul.vertical');
-	verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
-}
+    let slideIndex = 0;
+    function showSlides() {
+        let slides = document.getElementsByClassName("slide");
+        let slider = document.getElementById("slider");
+        if (!slider || slides.length === 0) return;
 
-window.addEventListener('scroll', fadeInOnScroll);
+        let slideWidth = slides[0].clientWidth;
+        let transformValue = -slideIndex * slideWidth;
+        slider.style.transform = "translateX(" + transformValue + "px)";
+    }
 
-  function fadeInOnScroll() {
-    var elements = document.querySelectorAll('.fain');
-    var windowHeight = window.innerHeight;
-
-    elements.forEach(function(element) {
-        var distanceFromTop = element.getBoundingClientRect().top;
-        if (distanceFromTop - windowHeight <= 0) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)'; 
+    function plusSlides(n) {
+        slideIndex += n;
+        let slides = document.getElementsByClassName("slide");
+        if (slides.length === 0) return;
+        
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
         }
-    });
-}
+        if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+        showSlides();
+    }
 
+    if (document.getElementById("prevBtn")) {
+        document.getElementById("prevBtn").addEventListener("click", function() {
+            plusSlides(-1);
+        });
+    }
+
+    if (document.getElementById("nextBtn")) {
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            plusSlides(1);
+        });
+    }
+
+    setInterval(function() { plusSlides(1); }, 3000);
+
+    // 確保 showXX() 不會在找不到元素時報錯
+    function showSection(sectionId) {
+        let sections = ["div98", "div00", "div0", "div1", "div10", "div99"];
+        sections.forEach(id => {
+            let el = document.getElementById(id);
+            if (el) el.style.display = (id === sectionId) ? "block" : "none";
+        });
+    }
+
+    // 簡化 showXX() 方法
+    window.show00 = () => showSection("div00");
+    window.show0 = () => showSection("div0");
+    window.show1 = () => showSection("div1");
+    window.show10 = () => showSection("div10");
+    window.show98 = () => showSection("div98");
+    window.show99 = () => showSection("div99");
+
+    function changeImage(imagePath, groupId) {
+        let group = document.getElementById(groupId);
+        if (group) {
+            let imageDisplay = group.querySelector('#image-display');
+            if (imageDisplay) {
+                imageDisplay.src = imagePath;
+            }
+        }
+    }
+
+    function downlist() {
+        let verticalList = document.querySelector('#nav ul.vertical');
+        if (verticalList) {
+            verticalList.style.display = (verticalList.style.display === 'block') ? 'none' : 'block';
+        }
+    }
+
+    function fadeInOnScroll() {
+        let elements = document.querySelectorAll('.fain');
+        let windowHeight = window.innerHeight;
+
+        elements.forEach(function(element) {
+            let distanceFromTop = element.getBoundingClientRect().top;
+            if (distanceFromTop - windowHeight <= 0) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    if (document.querySelector('.fain')) {
+        window.addEventListener('scroll', fadeInOnScroll);
+    }
+
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch(window.location.href, { method: "HEAD" })
+    .then(response => {
+      if (!response.ok) {
+        window.location.href = "/"; // 轉到首頁
+      }
+    })
+    .catch(() => {
+      window.location.href = "/"; // 如果發生錯誤，仍然導向首頁
+    });
+});
 
