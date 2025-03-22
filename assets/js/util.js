@@ -628,17 +628,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  fetch(window.location.href, { method: "HEAD" })
-    .then(response => {
-      if (!response.ok) {
-        window.location.href = "/"; // 轉到首頁
-      }
-    })
-    .catch(() => {
-      window.location.href = "/"; // 如果發生錯誤，仍然導向首頁
-    });
-});
-
