@@ -576,7 +576,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setInterval(function() { plusSlides(1); }, 3000);
 
-    // 確保 showXX() 不會在找不到元素時報錯
     function showSection(sectionId) {
         let sections = ["div98", "div00", "div0", "div1", "div10", "div99"];
         sections.forEach(id => {
@@ -593,16 +592,27 @@ document.addEventListener("DOMContentLoaded", function() {
     window.show98 = () => showSection("div98");
     window.show99 = () => showSection("div99");
 
-    function changeImage(imagePath, groupId) {
-        let group = document.getElementById(groupId);
-        if (group) {
-            let imageDisplay = group.querySelector('#image-display');
-            if (imageDisplay) {
-                imageDisplay.src = imagePath;
-            }
-        }
-    }
-
+    document.querySelectorAll('.circle-button').forEach(button => {
+		button.addEventListener('click', function() {
+			// 找到最近的 article
+			let article = this.closest('article');
+			if (!article) return;
+			
+			// 取得對應的 image-display
+			let imageDisplay = article.querySelector('#image-display');
+			if (!imageDisplay) return;
+			
+			// 取得 circle-button 的背景圖片
+			let bgImage = this.style.backgroundImage;
+			let imageUrl = bgImage.match(/url\(['"]?(.*?)['"]?\)/)[1];
+			
+			// 設定新圖片
+			imageDisplay.src = imageUrl;
+		});
+	});
+	
+	
+	
     function downlist() {
         let verticalList = document.querySelector('#nav ul.vertical');
         if (verticalList) {
