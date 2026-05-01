@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /assets/
-Disallow: /images/
-Disallow: /google63aac39a20247a7e.html
-search: yes
-ai-input: yes
-ai-train: no
