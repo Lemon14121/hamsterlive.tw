@@ -49,9 +49,3 @@ Disallow: /
 
 User-agent: PerplexityBot
 Disallow: /
-
-# === 你的 content signals（表達法律立場）===
-search: yes
-ai-input: yes
-ai-train: no
-
